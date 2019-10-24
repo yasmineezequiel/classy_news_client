@@ -1,2 +1,3 @@
 # classy_news_client
-Newsrrom September 2019
+Oct. 2019
+
