@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-
 import ArticleList from '../Components/ArticleList';
 
 describe('<ArticleList />', () => {
