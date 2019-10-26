@@ -13,23 +13,41 @@ class ListArticles extends Component {
 
   async getArticles() {
     let result = await getData()
-    this.setState({
-      articles: result
-    })
+    debugger
+
+    if (result.status === 400) {
+      this.setState({
+        error_message: result.error_message
+      })
+    } else {
+      this.setState({
+        articles: result
+      })
+    }
   }
 
   render() {
     let renderListArticles;
     const articleData = this.state.articles
 
-    if (articleData !== []) {
+    if (this.state.error_message) {
+      return(
+        <div>
+          { this.state.error_message }
+        </div>
+      )
+    }
+
+    if (articleData.length !== 0) {
+      //debugger
       renderListArticles = (
         <div>
-          {articleData.map(art => {
+          {articleData.data.map(art => {
             return <div key={art.id}>
-                    <p>{art.title}</p>
+                    <h2>{art.title}</h2>
                     <p>{art.content}</p>
                     <p>{art.author}</p>
+                    <hr />
                   </div>
           })}
         </div>
@@ -45,6 +63,7 @@ class ListArticles extends Component {
     }
     return(
       <>
+        <h1>Classy News</h1>
         {renderListArticles}
       </>
     )

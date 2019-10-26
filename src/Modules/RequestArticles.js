@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-const apiUrl = 'http://localhost:3000/api/v1'
+const apiUrl = 'http://localhost:3000/v1'
 
 const getData = async () => {
   try {
     let response = await axios.get(apiUrl + '/articles')
-    return response.articles
+    return response
   } catch (error) {
     return {
       error_message: error.message,
