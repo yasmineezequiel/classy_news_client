@@ -3,24 +3,15 @@ import axios from 'axios'
 const apiUrl = 'http://localhost:3000/api/v1'
 
 const getData = async () => {
-  let headers = await sessionStorage.getItem("credentials");
-  headers = JSON.parse(headers)
-  headers = {
-    ...headers,
-    "Content-type": "application/json",
-    Accept: "application/json"
-  };
-  const path = apiUrl + "/articles";
-  return new Promise((resolve, reject) => {
-    axios
-      .get(path, {
-        headers: headers
-      })
-      .then(response => {
-        //storeAuthCredentials(response)
-        resolve(response)
-      })
-  })
+  try {
+    let response = await axios.get(apiUrl + '/articles')
+    return response.articles
+  } catch (error) {
+    return {
+      error_message: error.message,
+      status: 400
+    }
+  }
 }
 
 export { getData }

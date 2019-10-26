@@ -8,6 +8,7 @@ describe('Classy News Network user can view a list of articles', () => {
       response: 'fixture:articles.json'
     })
   })
+  
   it("contains a title",() => {
     cy.contains("Leonardo da Vinci")
     cy.contains("Lauren Lion")

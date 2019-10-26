@@ -2,40 +2,51 @@ import React, { Component } from 'react'
 import { getData } from '../Modules/RequestArticles'
 
 class ListArticles extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      articles: []
-    }
+  state = {
+    articles: [],
+    error_message: null
+  }
+
+  componentDidMount() {
+    this.getArticles()
   }
 
   async getArticles() {
     let result = await getData()
     this.setState({
-      articles: result.data.entries
+      articles: result
     })
   }
 
   render() {
+    let renderListArticles;
     const articleData = this.state.articles
-    this.getArticles()
 
     if (articleData !== []) {
-      articleData.forEach(art => {
-        return (
-          <div key={art.id}>
-            {art.data.title}
-            {art.data.content}
-            {art.data.author}
+      renderListArticles = (
+        <div>
+          {articleData.map(art => {
+            return <div key={art.id}>
+                    <p>{art.title}</p>
+                    <p>{art.content}</p>
+                    <p>{art.author}</p>
+                  </div>
+          })}
+        </div>
+      )
+    } else {
+        return(
+          renderListArticles = (
+          <div>
+            No Articles Found
           </div>
         )
-      })
+      )
     }
-
     return(
-      <div>
-        No Articles Found
-      </div>
+      <>
+        {renderListArticles}
+      </>
     )
   }
 }
