@@ -17,7 +17,7 @@ describe('User can sign up', () => {
       cy.get('#nickname-input').type('nickname')
       cy.get('#name-input').type('name')
       cy.get('#city-input').type('city')
-      cy.get('#country-input').select('country')
+      cy.get('#country-input').select('Sweden')
       cy.get('#email-input').type('user@mail.com')
       cy.get('#password-input').type('password')
       cy.get('#password-confirmation').type('password')
