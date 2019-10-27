@@ -42,7 +42,12 @@ class App extends Component {
   
   render() {
     let signupForm
-    
+    //let welcomeMessage
+
+    // if (this.props.currentUser) {
+    //   debugger
+    // }
+
     if (this.state.renderSignupForm) {
       signupForm = (
         <div>
@@ -79,6 +84,6 @@ const mapDispatchToProps = {
 }
 
 export default connect(
-  mapDispatchToProps,
-  mapStateToProps
+  mapStateToProps,  
+  mapDispatchToProps
 )(App);

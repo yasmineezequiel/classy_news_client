@@ -8,34 +8,39 @@ const SignupForm = (props) => {
     <div>
       <Form id='signup-form'>
           <Form.Field>
-            <input onChange={props.inputChangeHandler} placeholder='Name' name='name' />
+            <input onChange={props.inputChangeHandler} placeholder='Name' name='name' id="name-input" />
           </Form.Field>
           <Form.Field>
-            <input onChange={props.inputChangeHandler} placeholder='Nickname' name='nickname' />
+            <input onChange={props.inputChangeHandler} placeholder='Nickname' name='nickname' id="nickname-input" />
           </Form.Field>
           <Form.Field>
-            <input onChange={props.inputChangeHandler} placeholder='City' name='city' />
+            <input onChange={props.inputChangeHandler} placeholder='City' name='city' id="city-input" />
           </Form.Field>
           <Form.Field>
-            <select onChange={props.inputChangeHandler} placeholder='Country' name='country' />
+            <select onChange={props.inputChangeHandler} placeholder='Country' name='country' id="country-input">
+              <option value='Sweden'>Sweden</option>
               <option value='Brazil'>Brazil</option>
               <option value='Germany'>Germany</option>
               <option value='Iceland'>Iceland</option>
               <option value='Portugal'>Portugal</option>
               <option value='Russia'>Russia</option>
-              <option value='Sweden'>Sweden</option>
               <option value='USA'>USA</option>
+            </select>
           </Form.Field>
           <Form.Field>
-            <input onChange={props.inputChangeHandler} placeholder='Password' name='password' />
+            <input onChange={props.inputChangeHandler} placeholder='Email' name='email' id="email-input" />
           </Form.Field>
           <Form.Field>
-            <input onChange={props.inputChangeHandler} placeholder='Password Confirmation' name='password_confirmation' />
+            <input onChange={props.inputChangeHandler} placeholder='Password' name='password' id="password-input" />
           </Form.Field>
-          <Button onClick={props.handleSignup} id="submit-signup-form" type='submit' onClick={ (e) => props.signupHandler(e) }>Submit</Button>
+          <Form.Field>
+            <input onChange={props.inputChangeHandler} placeholder='Password Confirmation' name='password_confirmation' id="password-confirmation" />
+          </Form.Field>
+          <Button onClick={props.handleSignup} id="submit-signup-form" type='submit'>Submit</Button>
         </Form>
     </div>
   )
+  debugger
 }
 
 export default SignupForm
