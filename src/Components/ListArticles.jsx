@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { getData } from '../Modules/RequestArticles'
+import { Container, Header } from 'semantic-ui-react'
 
 class ListArticles extends Component {
   state = {
@@ -41,16 +42,16 @@ class ListArticles extends Component {
     if (articleData.length !== 0) {
       //debugger
       renderListArticles = (
-        <div>
+        <Container text>
           {articleData.data.map(art => {
             return <div key={art.id}>
-                    <h2>{art.title}</h2>
-                    <p>{art.content}</p>
-                    <p>{art.author}</p>
+                    <Header as='h2' id="article-title">{art.title}</Header>
+                    <p className="article-content">{art.content}</p>
+                    <p className="article-author">{art.author}</p>
                     <hr />
                   </div>
           })}
-        </div>
+        </Container>
       )
     } else {
         return(
