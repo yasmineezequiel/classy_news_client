@@ -18,4 +18,15 @@ describe('user can view listed articles', () => {
       .should('contain', 'Lauren Lion')
       .should('contain', 'Some awesome author')
   })
+
+  it('sees error message for no articles', () => {
+    cy.server()
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/v1/articles',
+      status: 400,
+    })
+    cy.visit('http://localhost:3001')
+    cy.contains('Request failed with status code 404')
+  })
 })

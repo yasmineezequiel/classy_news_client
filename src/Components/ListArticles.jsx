@@ -57,15 +57,17 @@ class ListArticles extends Component {
         return(
           renderListArticles = (
           <div>
-            No Articles Found
+            {this.state.error_message}
           </div>
         )
       )
     }
     return(
       <>
-        <h1>Classy News</h1>
+      <Container text>
+        <Header as='h1' id="header-title">Classy News</Header>
         {renderListArticles}
+      </Container>
       </>
     )
   }
