@@ -8,16 +8,16 @@ const SignupForm = (props) => {
     <div>
       <Form id='signup-form'>
           <Form.Field>
-            <input placeholder='Name' />
+            <input onChange={props.inputChangeHandler} placeholder='Name' name='name' />
           </Form.Field>
           <Form.Field>
-            <input placeholder='Nickname' />
+            <input onChange={props.inputChangeHandler} placeholder='Nickname' name='nickname' />
           </Form.Field>
           <Form.Field>
-            <input placeholder='City' />
+            <input onChange={props.inputChangeHandler} placeholder='City' name='city' />
           </Form.Field>
           <Form.Field>
-            <select placeholder='Country' />
+            <select onChange={props.inputChangeHandler} placeholder='Country' name='country' />
               <option value='Brazil'>Brazil</option>
               <option value='Germany'>Germany</option>
               <option value='Iceland'>Iceland</option>
@@ -27,12 +27,12 @@ const SignupForm = (props) => {
               <option value='USA'>USA</option>
           </Form.Field>
           <Form.Field>
-            <input placeholder='Password' />
+            <input onChange={props.inputChangeHandler} placeholder='Password' name='password' />
           </Form.Field>
           <Form.Field>
-            <input placeholder='Password Confirmation' />
+            <input onChange={props.inputChangeHandler} placeholder='Password Confirmation' name='password_confirmation' />
           </Form.Field>
-          <Button id="submit-signup-form" type='submit' onClick={ (e) => props.signupHandler(e) }>Submit</Button>
+          <Button onClick={props.handleSignup} id="submit-signup-form" type='submit' onClick={ (e) => props.signupHandler(e) }>Submit</Button>
         </Form>
     </div>
   )
