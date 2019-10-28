@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Button } from "semantic-ui-react";
 import SignupForm from './Components/SignupForm';
 import { registerUser } from './state/actions/reduxTokenAuthConfig';
 import { connect } from 'react-redux';
+import { Button, 
+         Container,
+         Grid  } from 'semantic-ui-react';
 
 class App extends Component {
   state = {
@@ -53,6 +55,7 @@ class App extends Component {
             <SignupForm
               inputChangeHandler = {this.inputChangeHandler}
               handleSignup={this.handleSignup}
+              renderSignup={this.renderSignup}
             />
           </div>
         )
@@ -66,10 +69,16 @@ class App extends Component {
     }
 
     return (
-      <div>
-        { signupForm }
-        { welcomeMessage }
-      </div>     
+      <Container>
+        <Grid centered columns={1}>
+          <Grid.Column>
+            <div>
+              { signupForm }
+              { welcomeMessage }
+            </div>
+          </Grid.Column>
+        </Grid>   
+      </Container>  
     )
   }
 }

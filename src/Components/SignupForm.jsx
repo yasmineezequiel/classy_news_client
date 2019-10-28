@@ -17,7 +17,7 @@ const SignupForm = (props) => {
             <input onChange={props.inputChangeHandler} placeholder='City' name='city' id="city-input" />
           </Form.Field>
           <Form.Field>
-            <select onChange={props.inputChangeHandler} placeholder='Country' name='country' id="country-input">
+            <select className="select-css" onChange={props.inputChangeHandler} placeholder='Country' name='country' id="country-input">
               <option value='Sweden'>Sweden</option>
               <option value='Brazil'>Brazil</option>
               <option value='Germany'>Germany</option>
@@ -37,6 +37,7 @@ const SignupForm = (props) => {
             <input onChange={props.inputChangeHandler} placeholder='Password Confirmation' name='password_confirmation' id="password-confirmation" />
           </Form.Field>
           <Button onClick={props.handleSignup} id="submit-signup-form" type='submit'>Submit</Button>
+          <Button onClick={props.renderSignup} id="cancel-signup-form">Cancel</Button>
         </Form>
     </div>
   )
