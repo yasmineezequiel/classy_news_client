@@ -5,6 +5,8 @@
     "nickname": "nickname",
     "email": "user@mail.com",
     "city": "city",
-    "country": "Sweden"
+    "country": "Sweden",
+    "provider": "email",
+    "uid": "user@mail.com"
   }
 }

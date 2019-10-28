@@ -4,14 +4,18 @@ describe('User can sign up', () => {
   })
 
   it('successfully', () => {
+    cy.visit('http://localhost:3001');
+    cy.server();
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/v1/auth',
-      response: 'fixture:successful_user_sign_up.json',
-      status: 200
+      url: 'http://localhost:3000/api/v1/auth',
+      response: 'fixture:successful_user_signup.json',
+      status: 200,
+      headers: {
+        "uid": "user@mail.com"
+      }
     })
 
-    cy.visit('http://localhost:3001')
     cy.get('#signup-button').click()
     cy.get('#signup-form').within(()=> {
       cy.get('#nickname-input').type('nickname')
