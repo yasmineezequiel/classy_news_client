@@ -14,7 +14,6 @@ class ListArticles extends Component {
 
   async getArticles() {
     let result = await getData()
-    debugger
 
     if (result.status === 400) {
       this.setState({
@@ -40,7 +39,6 @@ class ListArticles extends Component {
     }
 
     if (articleData.length !== 0) {
-      //debugger
       renderListArticles = (
         <Container text>
           {articleData.data.map(art => {
@@ -62,6 +60,7 @@ class ListArticles extends Component {
         )
       )
     }
+    
     return(
       <>
       <Container text>

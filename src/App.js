@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import ListArticles from './Components/ListArticles'
 
 class App extends Component {
@@ -10,4 +10,4 @@ class App extends Component {
     )
   }
 }
-export default App;
+export default App
