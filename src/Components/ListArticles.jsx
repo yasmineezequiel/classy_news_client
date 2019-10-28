@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { getData } from '../Modules/RequestArticles'
-import { Container, Header } from 'semantic-ui-react'
+import { Container, Header, Image, Item } from 'semantic-ui-react'
 
 class ListArticles extends Component {
   state = {
@@ -40,17 +40,24 @@ class ListArticles extends Component {
 
     if (articleData.length !== 0) {
       renderListArticles = (
-        <Container text>
+        <>
           {articleData.data.map(art => {
             return <div key={art.id}>
-                    <Header as='h2' id="article-title">{art.title}</Header>
-                    <p className="article-content">{art.content}</p>
-                    <p className="article-author">{art.author}</p>
-                    <img src="https://t3.ftcdn.net/jpg/02/48/42/64/240_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg" />
-                    <hr />
+                    <Item>
+                      <Item.Image size='tiny' src='https://react.semantic-ui.com/images/wireframe/image.png' />
+
+                      <Item.Content>
+                        <Item.Header as='a'>{art.title}</Item.Header>
+                        <Item.Meta>{art.content}</Item.Meta>
+                        <Item.Description>
+                          shit
+                        </Item.Description>
+                        <Item.Extra>{art.author}</Item.Extra>
+                      </Item.Content>
+                    </Item>
                   </div>
           })}
-        </Container>
+        </>
       )
     } else {
         return(
@@ -65,8 +72,10 @@ class ListArticles extends Component {
     return(
       <>
       <Container text>
-        <Header as='h1' id="header-title">Classy News</Header>
-        {renderListArticles}
+        <Item.Group>
+          <Header as='h1' id="header-title">Classy News</Header>
+          {renderListArticles}
+        </Item.Group>
       </Container>
       </>
     )
