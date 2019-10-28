@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form,
-  Button 
+         Button 
 } from "semantic-ui-react";
 
 const SignupForm = (props) => {
@@ -40,7 +40,6 @@ const SignupForm = (props) => {
         </Form>
     </div>
   )
-  debugger
 }
 
 export default SignupForm

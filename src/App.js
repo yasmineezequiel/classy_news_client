@@ -42,32 +42,33 @@ class App extends Component {
   
   render() {
     let signupForm
-    //let welcomeMessage
+    let welcomeMessage
 
-    // if (this.props.currentUser) {
-    //   debugger
-    // }
-
-    if (this.state.renderSignupForm) {
-      signupForm = (
-        <div>
-          <SignupForm
-            inputChangeHandler = {this.inputChangeHandler}
-            handleSignup={this.handleSignup}
-          />
-        </div>
-      )
+    if (this.props.currentUser.isSignedIn) {
+      welcomeMessage = <p>Hello {this.props.currentUser.attributes.name}</p>
     } else {
-      signupForm = (
-        <div>
-          <Button id="signup-button" onClick={ this.renderSignup }>Sign Up</Button>
-        </div>
-      )
+      if (this.state.renderSignupForm) {
+        signupForm = (
+          <div>
+            <SignupForm
+              inputChangeHandler = {this.inputChangeHandler}
+              handleSignup={this.handleSignup}
+            />
+          </div>
+        )
+      } else {
+        signupForm = (
+          <div>
+            <Button id="signup-button" onClick={ this.renderSignup }>Sign Up</Button>
+          </div>
+        )
+      }
     }
 
     return (
       <div>
         { signupForm }
+        { welcomeMessage }
       </div>     
     )
   }
