@@ -19,7 +19,7 @@ describe('user can view listed articles', () => {
       .should('contain', 'Some awesome author')
   })
 
-  it('sees error message for no articles', () => {
+  xit('sees error message for no articles', () => {
     cy.server()
     cy.route({
       method: 'GET',

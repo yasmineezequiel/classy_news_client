@@ -46,6 +46,7 @@ class ListArticles extends Component {
                     <Header as='h2' id="article-title">{art.title}</Header>
                     <p className="article-content">{art.content}</p>
                     <p className="article-author">{art.author}</p>
+                    <img src="https://t3.ftcdn.net/jpg/02/48/42/64/240_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg" />
                     <hr />
                   </div>
           })}
