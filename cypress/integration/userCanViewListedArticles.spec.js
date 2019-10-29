@@ -11,15 +11,13 @@ describe('user can view listed articles', () => {
     cy.get('h2')
       .should('contain', 'Leonardo da Vinci five centuries on:')
       .should('contain', 'Some Title')
-    cy.get('.article-content')
-      .should('contain', 'The Louvre museum in Paris,')
-      .should('contain', 'Some good content')
-    cy.get('.article-author')
-      .should('contain', 'Lauren Lion')
-      .should('contain', 'Some awesome author')
+    cy.contains('The Louvre museum in Paris,')
+    cy.contains('Some good content')
+    cy.contains('Lauren Lion')
+    cy.contains('Some awesome author')
   })
 
-  xit('sees error message for no articles', () => {
+  it('sees error message for no articles', () => {
     cy.server()
     cy.route({
       method: 'GET',
@@ -27,6 +25,6 @@ describe('user can view listed articles', () => {
       status: 400,
     })
     cy.visit('http://localhost:3001')
-    cy.contains('Request failed with status code 404')
+    cy.contains('Network Error')
   })
 })

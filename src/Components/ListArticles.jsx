@@ -12,6 +12,11 @@ class ListArticles extends Component {
     this.getArticles()
   }
 
+  makeIngress = (content, wordcount) => {
+    let ingress = content.split(' ').slice(0, wordcount).join(' ')
+    return ingress + ' ...'
+  }
+
   async getArticles() {
     let result = await getData()
 
@@ -49,9 +54,8 @@ class ListArticles extends Component {
 
                   <Item.Content>
                     <Item.Header as='h2'>{art.title}</Item.Header>
-                    <Item.Meta>{art.content}</Item.Meta>
+                    <Item.Meta name="article-content">{this.makeIngress(art.content, 15)}</Item.Meta>
                     <Item.Description>
-                      shit
                     </Item.Description>
                     <Item.Extra>{art.author}</Item.Extra>
                   </Item.Content>
