@@ -1,0 +1,12 @@
+{
+  "data": {
+    "id": 1,
+    "name": "name",
+    "nickname": "nickname",
+    "email": "user@mail.com",
+    "city": "city",
+    "country": "Sweden",
+    "provider": "email",
+    "uid": "user@mail.com"
+  }
+}
