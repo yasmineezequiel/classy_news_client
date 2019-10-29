@@ -48,7 +48,7 @@ class ListArticles extends Component {
                   <Item.Image size='tiny' src='https://react.semantic-ui.com/images/wireframe/image.png' />
 
                   <Item.Content>
-                    <Item.Header as='a'>{art.title}</Item.Header>
+                    <Item.Header as='h2'>{art.title}</Item.Header>
                     <Item.Meta>{art.content}</Item.Meta>
                     <Item.Description>
                       shit
