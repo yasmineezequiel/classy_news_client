@@ -15,7 +15,8 @@ class App extends Component {
     nickname: '',
     name: '',
     city: '',
-    country: 'Sweden'
+    country: 'Sweden',
+    errorMessage: ''
   }
 
   renderSignup = () => {
@@ -38,13 +39,17 @@ class App extends Component {
         console.log('yiihaaaa')
       )
       .catch(error => {
-        console.log(error)
+        debugger
+        this.setState({errorMessage: error.response.data.errors}) 
       })
   }
+
+
   
   render() {
     let signupForm
     let welcomeMessage
+    let errorMessage
 
     if (this.props.currentUser.isSignedIn) {
       welcomeMessage = <p id="welcome-message">Hello {this.props.currentUser.attributes.name}</p>
@@ -67,6 +72,9 @@ class App extends Component {
         )
       }
     }
+    if (this.state.errorMessage !== '') {
+      errorMessage = this.state.errorMessage
+    }
 
     return (
       <Container>
@@ -76,6 +84,7 @@ class App extends Component {
               { signupForm }
               { welcomeMessage }
             </div>
+            <p id="error-message">{ errorMessage }</p>
           </Grid.Column>
         </Grid>   
       </Container>  

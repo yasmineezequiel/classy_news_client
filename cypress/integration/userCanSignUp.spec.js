@@ -29,4 +29,28 @@ describe('User can sign up', () => {
     cy.get('#submit-signup-form').click()
     cy.get('#welcome-message').should('contain', 'Hello name')
   })
+
+  it('unsuccessfully', () => {
+    cy.visit('http://localhost:3001');
+    cy.server();
+    cy.route({
+      method: 'POST',
+      url: 'http://localhost:3000/api/v1/auth',
+      response: 'fixture:unsuccessful_user_signup.json',
+      status: 422,
+    })
+
+    cy.get('#signup-button').click()
+    cy.get('#signup-form').within(()=> {
+      cy.get('#nickname-input').type('nickname')
+      cy.get('#name-input').type('user')
+      cy.get('#city-input').type('city')
+      cy.get('#country-input').select('Sweden')
+      cy.get('#email-input').type('user@mail.com')
+      cy.get('#password-input').type('password')
+      cy.get('#password-confirmation').type('wrong_password')
+    })
+    cy.get('#submit-signup-form').click()
+    cy.get('#error-message').should('contain', 'Invalid credentials')
+  })
 })
