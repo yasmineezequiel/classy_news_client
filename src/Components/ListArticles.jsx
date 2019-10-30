@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { getData } from '../Modules/RequestArticles'
-import { Container, Header, Image, Item } from 'semantic-ui-react'
+import { Container, Header, Item } from 'semantic-ui-react'
 
 class ListArticles extends Component {
   state = {
