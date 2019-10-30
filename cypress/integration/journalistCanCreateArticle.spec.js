@@ -34,7 +34,14 @@ describe('User can create article', () => {
     cy.get('#create-article').click()
 
     cy.get('#article-form').within(() => {
-      cy.get('#title-input')
+      cy.get('#title-input').type('Trump has gone insane')
+      cy.get('#content-input').type('Trump has been diagnosed with crazy syndrome')
+      cy.get('#author-input').type('Faraz')
+      cy.get('#category-input').should('contain', '')
+      
+      cy.get('#submit-article').click()
+
     })
+    cy.get('#response-message').should('contain' , 'Request failed with status code 400')
   })
 })
