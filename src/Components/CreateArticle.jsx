@@ -63,15 +63,19 @@
                 </Form.Field>
                 <Form.Field>
                   <Button id="submit-article" onClick={this.submitArticleHandler.bind(this)}>Submit Article</Button>
+                  <Button id="cancel-article" onClick={this.renderForm}>Cancel</Button>
                 </Form.Field>
               </Form>
             </Container>
           </>
         )
+      } else {
+        articleForm = (
+          <Button onClick={this.renderForm} id="create-article">write Article</Button>
+        )
       }
       return(
         <>
-        <Button onClick={this.renderForm} id="create-article">write Article</Button>
         {articleForm}
         {responseMessage}
         </>
