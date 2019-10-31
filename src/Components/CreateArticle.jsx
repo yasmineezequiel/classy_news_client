@@ -1,4 +1,4 @@
- import React,{ Component } from 'react'
+ import React, { Component } from 'react'
  import { submitArticle } from '../Modules/RequestArticles'
  import { Form, Button, Container } from 'semantic-ui-react'
 
@@ -23,20 +23,22 @@
         [e.target.name]:e.target.value
       })
     }
+
     submitArticleHandler = async() => {
       const { title, content, author, category, publish_date } = this.state
       let response = await submitArticle(title, content, author, category, publish_date)
 
-      if(response.status === 200) {
+      if (response.status === 200) {
         this.setState({
           responseMessage: response.data.message
         })
-      }else{
+      } else {
         this.setState({
           responseMessage: response
         })
       }
     }
+
     render() {
       let articleForm
       let responseMessage
@@ -45,7 +47,7 @@
       responseMessage = <p id="response-message">{this.state.responseMessage}</p>
       }
 
-      if(this.state.renderArticleForm) {
+      if (this.state.renderArticleForm) {
         articleForm = (
           <>
             <Container>
@@ -77,8 +79,8 @@
       }
       return(
         <>
-        {articleForm}
-        {responseMessage}
+          {articleForm}
+          {responseMessage}
         </>
       )
     }

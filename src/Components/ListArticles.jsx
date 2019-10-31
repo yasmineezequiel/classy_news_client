@@ -47,12 +47,10 @@ class ListArticles extends Component {
       renderListArticles = (
         <>
           {articleData.data.map(art => {
-            debugger
             return <div key={art.id}>
               <Item.Group> 
                 <Item>
                   <Item.Image size='tiny' src='https://react.semantic-ui.com/images/wireframe/image.png' />
-
                   <Item.Content>
                     <Item.Description>{art.publish_date}</Item.Description>
                     <Item.Header as='h2'>{art.title}</Item.Header>
@@ -77,12 +75,12 @@ class ListArticles extends Component {
     
     return(
       <>
-      <Container text>
-        <Item.Group>
-          <Header as='h1' id="header-title">Classy News</Header>
-          {renderListArticles}
-        </Item.Group>
-      </Container>
+        <Container text>
+          <Item.Group>
+            <Header as='h1' id="header-title">Classy News</Header>
+            {renderListArticles}
+          </Item.Group>
+        </Container>
       </>
     )
   }

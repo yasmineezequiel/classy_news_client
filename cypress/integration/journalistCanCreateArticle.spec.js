@@ -18,7 +18,6 @@ describe('User can create article', () => {
 
       cy.get('#submit-article').click()
     })
-
     cy.get('#response-message').should('contain', 'Your article was submitted for review')
   })
 
@@ -40,7 +39,6 @@ describe('User can create article', () => {
       cy.get('#category-input').should('contain', '')
       
       cy.get('#submit-article').click()
-
     })
     cy.get('#response-message').should('contain' , 'Request failed with status code 400')
   })
