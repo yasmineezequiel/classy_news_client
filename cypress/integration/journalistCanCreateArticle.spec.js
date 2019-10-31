@@ -14,7 +14,6 @@ describe('User can create article', () => {
       cy.get('#title-input').type('Trump has gone insane')
       cy.get('#content-input').type('Trump has been diagnosed with crazy syndrome')
       cy.get('#author-input').type('Faraz')
-      cy.get('#category-input').type('Politics')
 
       cy.get('#submit-article').click()
     })
@@ -36,7 +35,6 @@ describe('User can create article', () => {
       cy.get('#title-input').type('Trump has gone insane')
       cy.get('#content-input').type('Trump has been diagnosed with crazy syndrome')
       cy.get('#author-input').type('Faraz')
-      cy.get('#category-input').should('contain', '')
       
       cy.get('#submit-article').click()
     })

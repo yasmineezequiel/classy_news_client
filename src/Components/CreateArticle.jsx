@@ -8,7 +8,6 @@
       title: '',
       content: '',
       author: '',
-      category: '',
       image: '',
       publish_date: '',
       renderArticleForm: false
@@ -27,8 +26,8 @@
     }
 
     submitArticleHandler = async() => {
-      const { title, content, author, category, publish_date, image } = this.state
-      let response = await submitArticle(title, content, author, category, image, publish_date)
+      const { title, content, author, image } = this.state
+      let response = await submitArticle(title, content, author, image)
 
       if (response.status === 200) {
         this.setState({
@@ -68,9 +67,6 @@
                 </Form.Field>
                 <Form.Field>
                   <input name="author" id="author-input" placeholder="Author" onBlur ={this.inputHandler}/>
-                </Form.Field>
-                <Form.Field>
-                  <input name="category" id="category-input" placeholder="Category" onBlur ={this.inputHandler}/>
                 </Form.Field>
                 <Form.Field>
                   <ImageUploader 
