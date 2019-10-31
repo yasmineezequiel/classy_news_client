@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const apiUrl = 'http://localhost:3000/v1/'
+const apiUrl = 'http://localhost:3000/api/v1/'
 
 const getData = async () => {
   try {
@@ -14,7 +14,7 @@ const getData = async () => {
   }
 }
 
-const submitArticle = async (title, content, author, category) => {
+const submitArticle = async (title, content, author, category, publish_date) => { //add <- publish_date here %d %B %Y (30 October 2019)
   try {
     let response = await axios.post(
       apiUrl + 'articles',
@@ -22,7 +22,8 @@ const submitArticle = async (title, content, author, category) => {
         title: title,
         content: content,
         author: author,
-        category: category
+        category: category,
+        publish_date: publish_date
       }
     )
     return response

@@ -8,6 +8,7 @@
       content:'',
       author:'',
       category:'',
+      publish_date: '',
       renderArticleForm: false
     }
 
@@ -23,8 +24,8 @@
       })
     }
     submitArticleHandler = async() => {
-      const { title, content, author, category } = this.state
-      let response = await submitArticle(title, content, author, category)
+      const { title, content, author, category, publish_date } = this.state
+      let response = await submitArticle(title, content, author, category, publish_date)
 
       if(response.status === 200) {
         this.setState({
