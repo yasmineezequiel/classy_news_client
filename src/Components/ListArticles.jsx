@@ -51,12 +51,10 @@ class ListArticles extends Component {
               <Item.Group> 
                 <Item>
                   <Item.Image size='tiny' src='https://react.semantic-ui.com/images/wireframe/image.png' />
-
                   <Item.Content>
+                    <Item.Description>{art.publish_date}</Item.Description>
                     <Item.Header as='h2'>{art.title}</Item.Header>
                     <Item.Meta name="article-content">{this.makeIngress(art.content, 15)}</Item.Meta>
-                    <Item.Description>
-                    </Item.Description>
                     <Item.Extra>{art.author}</Item.Extra>
                   </Item.Content>
                 </Item>
@@ -77,12 +75,12 @@ class ListArticles extends Component {
     
     return(
       <>
-      <Container text>
-        <Item.Group>
-          <Header as='h1' id="header-title">Classy News</Header>
-          {renderListArticles}
-        </Item.Group>
-      </Container>
+        <Container text>
+          <Item.Group>
+            <Header as='h1' id="header-title">Classy News</Header>
+            {renderListArticles}
+          </Item.Group>
+        </Container>
       </>
     )
   }
