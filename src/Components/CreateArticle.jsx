@@ -70,6 +70,7 @@
                 </Form.Field>
                 <Form.Field>
                   <ImageUploader 
+                    className="file-input"
                     buttonText={"Upload article image (jpg/png)"}
                     withPreview
                     withIcon
