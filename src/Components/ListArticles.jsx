@@ -31,6 +31,12 @@ class ListArticles extends Component {
     }
   }
 
+  articleHandler() {
+    this.setState({
+      articles: article.id
+    })
+  }
+
   render() {
     let renderListArticles;
     const articleData = this.state.articles
@@ -47,13 +53,14 @@ class ListArticles extends Component {
       renderListArticles = (
         <>
           {articleData.data.map(art => {
+            debugger
             return <div key={art.id}>
               <Item.Group> 
                 <Item>
                   <Item.Image size='tiny' src='https://react.semantic-ui.com/images/wireframe/image.png' />
                   <Item.Content>
                     <Item.Description>{art.publish_date}</Item.Description>
-                    <Item.Header as='h2'>{art.title}</Item.Header>
+                    <Item.Header as='a' onClick={() => { this.articleHandler }}>{art.title}</Item.Header>
                     <Item.Meta name="article-content">{this.makeIngress(art.content, 15)}</Item.Meta>
                     <Item.Extra>{art.author}</Item.Extra>
                   </Item.Content>
