@@ -1,13 +1,15 @@
  import React, { Component } from 'react'
  import { submitArticle } from '../Modules/RequestArticles'
  import { Form, Button, Container } from 'semantic-ui-react'
+ import ImageUploader from 'react-images-upload'
 
  class CreateArticle extends Component {
     state = {
-      title:'',
-      content:'',
-      author:'',
-      category:'',
+      title: '',
+      content: '',
+      author: '',
+      category: '',
+      image: '',
       publish_date: '',
       renderArticleForm: false
     }
@@ -25,8 +27,8 @@
     }
 
     submitArticleHandler = async() => {
-      const { title, content, author, category, publish_date } = this.state
-      let response = await submitArticle(title, content, author, category, publish_date)
+      const { title, content, author, category, publish_date, image } = this.state
+      let response = await submitArticle(title, content, author, category, image, publish_date)
 
       if (response.status === 200) {
         this.setState({
@@ -37,6 +39,12 @@
           responseMessage: response
         })
       }
+    }
+
+    onAvatarDropHandler = (pictureFiles, pictureDataURLs) => {
+      this.setState({
+        image: pictureDataURLs
+      })
     }
 
     render() {
@@ -63,6 +71,18 @@
                 </Form.Field>
                 <Form.Field>
                   <input name="category" id="category-input" placeholder="Category" onBlur ={this.inputHandler}/>
+                </Form.Field>
+                <Form.Field>
+                  <ImageUploader 
+                    buttonText={"Upload article image (jpg/png)"}
+                    withPreview
+                    withIcon
+                    withLabel={false}
+                    onChange={this.onAvatarDropHandler}
+                    imgExtension={[".jpg", ".png"]}
+                    maxFileSize={5242880}
+                    singleImage={true}
+                  />
                 </Form.Field>
                 <Form.Field>
                   <Button id="submit-article" onClick={this.submitArticleHandler.bind(this)}>Submit Article</Button>
