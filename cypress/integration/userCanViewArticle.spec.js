@@ -11,11 +11,6 @@ describe('user can view chosen article', () => {
       url: 'http://localhost:3000/api/v1/articles/1',
       response: 'fixture:article.json'
     })
-    cy.route({
-      method: 'GET',
-      url: 'http://localhost:3000/api/v1/articles/2',
-      response: 'fixture:article.json'
-    })
     cy.visit('http://localhost:3001')
     cy.wait(20)
     cy.contains('The Louvre museum in Paris,')
@@ -33,9 +28,9 @@ describe('user can view chosen article', () => {
     cy.route({
       method: 'GET',
       url: 'http://localhost:3000/api/v1/articles/1',
-      status: 404,
+      status: 404
     })
     cy.visit('http://localhost:3001')
-    cy.contains('Not Found')
+    cy.contains('Request failed with status code 404')
   })
 })
