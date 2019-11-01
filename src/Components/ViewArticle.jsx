@@ -14,7 +14,7 @@ class ViewArticle extends Component {
         article: response.data
       })
     } else {
-      this.props.renderErrorMessage(response) // Check this renderErrorMessage call
+      this.props.renderErrorMessage(response)
     }
   }
 
@@ -28,7 +28,7 @@ class ViewArticle extends Component {
           <Container>
             <Item.Group> 
               <Item>
-                {/* <Item.Image size='tiny' src='https://react.semantic-ui.com/images/wireframe/image.png' /> */}
+                <Item.Image size='tiny' src='https://react.semantic-ui.com/images/wireframe/image.png' /> 
                 <Item.Content>
                   <Item.Description id="article-date">{article.publish_date}</Item.Description>
                   <Item.Header as='h2' id="article-title">{article.title}</Item.Header>
