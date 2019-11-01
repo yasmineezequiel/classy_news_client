@@ -1,18 +1,24 @@
 import React, { Component } from 'react'
 import { getData } from '../Modules/RequestArticles'
 import { Container, Header, Item } from 'semantic-ui-react'
-import { Link } from 'react-router-dom';
+import ViewArticle from './ViewArticle';
 
 class ListArticles extends Component {
   state = {
     articles: [],
-    error_message: null
-    // renderArticle: false
+    error_message: null,
+    renderArticle: false
   }
 
   componentDidMount() {
     this.getArticles()
   }
+
+  setErrorMessage = (error) => {
+    this.setState({
+      error_message: error
+    })
+  }
 
   makeIngress = (content, wordcount) => {
     let ingress = content.split(' ').slice(0, wordcount).join(' ')
@@ -23,9 +29,7 @@ class ListArticles extends Component {
     let result = await getData()
 
     if (result.status === 400) {
-      this.setState({
-        error_message: result.error_message
-      })
+      this.setErrorMessage(result.error_message)
     } else {
       this.setState({
         articles: result
@@ -33,63 +37,65 @@ class ListArticles extends Component {
     }
   }
 
-  // renderArticleHandler = (chosenArticle) => {
-  //   this.setState({
-  //     renderArticle: true,
-  //     chosenArticleId: chosenArticle 
-  //   })
-  // }
+   renderArticleHandler = (chosenArticle) => {
+     this.setState({
+       renderArticle: true,
+       chosenArticleId: chosenArticle 
+    })
+  }
 
   render() {
     let renderListArticles;
-    //let renderArticle = this.state.renderArticle
+    let renderArticle = this.state.renderArticle
     const articleData = this.state.articles
+    let specificArticle
+    let error_message
 
     if (this.state.error_message) {
-      return(
-        <div>
-          { this.state.error_message }
-        </div>
-      )
+      error_message = <p>{ this.state.error_message }</p>
     }
 
     if (articleData.length !== 0) {
-      renderListArticles = (
-        <>
-          {articleData.data.map(art => {
-            debugger
-            return <div key={art.id}>
-              <Item.Group> 
-                <Item>
-                  <Item.Image size='tiny' src='https://react.semantic-ui.com/images/wireframe/image.png' />
-                  <Item.Content>
-                    <Item.Description>{art.publish_date}</Item.Description>
-                    <Item.Header id={`title_${art.id}`} as={Link} to={{ pathname: '/view-article', state: { id: `${art.id}`} }}>{art.title}</Item.Header>
-                    <Item.Meta name="article-content">{this.makeIngress(art.content, 15)}</Item.Meta>
-                    <Item.Extra>{art.author}</Item.Extra>
-                  </Item.Content>
-                </Item>
-              </Item.Group> 
-            </div>
-          })}
-        </>
-      )
-    } else {
-        return(
-          renderListArticles = (
-          <div>
-            {this.state.error_message}
-          </div>
-        )
-      )
-    }
-    
+      if (renderArticle === false) {
+        renderListArticles = (
+          <>
+            {articleData.data.map(art => {
+              return <div key={art.id}>
+                <Item.Group> 
+                  <Item>
+                    <Item.Image size='tiny' src='https://react.semantic-ui.com/images/wireframe/image.png' />
+                    <Item.Content>
+                      <Item.Description>{art.publish_date}</Item.Description>
+                      <Item.Header as="a" id={`article_${art.id}`} onClick={this.renderArticleHandler(art.id)} key={art.id}>{art.title}</Item.Header> {/*, state: { id: `${art.id}`}*/}
+                      <Item.Meta name="article-content">{this.makeIngress(art.content, 15)}</Item.Meta>
+                      <Item.Extra>{art.author}</Item.Extra>
+                    </Item.Content>
+                  </Item>
+                </Item.Group> 
+              </div>
+            })}
+          </>
+        )
+      }
+
+    if (renderArticle === true) {
+      specificArticle = (
+        <ViewArticle
+          chosenArticle = {this.state.chosenArticleId}
+          renderErrorMessage = {this.setErrorMessage}
+        />
+      )
+    }
+   }
+
     return(
       <>
         <Container text>
           <Item.Group>
             <Header as='h1' id="header-title">Classy News</Header>
             {renderListArticles}
+            {specificArticle}
+            {error_message}
           </Item.Group>
         </Container>
       </>

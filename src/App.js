@@ -5,17 +5,19 @@ import Login from './Components/Login'
 import './index.css';
 import CreateArticle from './Components/CreateArticle'
 import { Switch, Route } from 'react-router-dom'
+import ViewArticle from './Components/ViewArticle'
 
 class App extends Component {
   render() {
     return (
       <>
         <Switch>
-          <Route exact path='/list-articles' component={ListArticles} />
-          <Route exact path='/create-article' component={CreateArticle} />
-          <Route exact path='/signup' component={Signup} />
-          <Route exact path='/signup' component={Login} />
+          <Route exact path='/' component={ListArticles} />
+          <Route exact path='/view-article' component={ViewArticle} />
         </Switch>
+        <Login />
+        <Signup />
+        <CreateArticle />
       </>
     )
   }
