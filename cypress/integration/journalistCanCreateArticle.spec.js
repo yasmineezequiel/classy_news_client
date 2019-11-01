@@ -1,7 +1,5 @@
 describe('User can create article', () => {
   it('successfully', () => {
-    
-
     cy.server()
     cy.route({
       method: 'POST',
@@ -23,7 +21,7 @@ describe('User can create article', () => {
           cy.get('input[type="file"]').upload({ fileContent, fileName, mimeType: 'application/jpg' });
         });
       })
-      
+
       cy.get('#submit-article').click()
     })
     cy.get('#response-message').should('contain', 'Your article was submitted for review')
