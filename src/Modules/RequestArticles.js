@@ -32,4 +32,13 @@ const submitArticle = async (title, content, author, category, publish_date) => 
   }
 }
 
-export { getData, submitArticle }
+const getArticle = async (chosenArticle) => {
+  try {
+    let response = await axios.get(apiUrl + `articles/${chosenArticle}`)
+    return response 
+  } catch(error) {
+    return error.response.data.error_message
+  }
+}
+
+export { getData, submitArticle, getArticle }

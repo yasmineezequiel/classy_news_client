@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 class ListArticles extends Component {
   state = {
     articles: [],
-    error_message: null
+    error_message: null,
+    renderArticle: false
   }
 
   componentDidMount() {
@@ -32,14 +33,16 @@ class ListArticles extends Component {
     }
   }
 
-  articleHandler() {
+  renderArticleHandler = (chosenArticle) => {
     this.setState({
-      articles: article.id
+      renderArticle: true,
+      chosenArticleId: chosenArticle 
     })
   }
 
   render() {
     let renderListArticles;
+    let renderArticle = this.state.renderArticle
     const articleData = this.state.articles
 
     if (this.state.error_message) {
@@ -61,7 +64,7 @@ class ListArticles extends Component {
                   <Item.Image size='tiny' src='https://react.semantic-ui.com/images/wireframe/image.png' />
                   <Item.Content>
                     <Item.Description>{art.publish_date}</Item.Description>
-                    <Item.Header id={`title_${article.id}`} as='a' onClick={() => { this.articleHandler }}>{art.title}</Item.Header>
+                    <Item.Header id={`title_${art.id}`} as={Link} to={{ pathname: '/view-article', state: { id: `${art.id}`} }}>{art.title}</Item.Header>
                     <Item.Meta name="article-content">{this.makeIngress(art.content, 15)}</Item.Meta>
                     <Item.Extra>{art.author}</Item.Extra>
                   </Item.Content>
