@@ -8,6 +8,7 @@ class ViewArticle extends Component {
   }
 
   async componentDidMount() {
+  debugger
     let response = await getArticle(this.props.chosenArticle)
     if (response.status === 200) {
       this.setState({
@@ -30,10 +31,10 @@ class ViewArticle extends Component {
               <Item>
                 {/* <Item.Image size='tiny' src='https://react.semantic-ui.com/images/wireframe/image.png' /> */}
                 <Item.Content>
-                  <Item.Description>{article.publish_date}</Item.Description>
-                  <Item.Header as='h2'>{article.title}</Item.Header>
-                  <Item.Meta name="article-content">{article.content}</Item.Meta>
-                  <Item.Extra>{article.author}</Item.Extra>
+                  <Item.Description id="article-date">{article.publish_date}</Item.Description>
+                  <Item.Header as='h2' id="article-title">{article.title}</Item.Header>
+                  <Item.Meta id="article-content">{article.content}</Item.Meta>
+                  <Item.Extra id="article-author">{article.author}</Item.Extra>
                 </Item.Content>
               </Item>
             </Item.Group> 

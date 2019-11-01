@@ -7,10 +7,12 @@ class ListArticles extends Component {
   state = {
     articles: [],
     error_message: null,
-    renderArticle: false
+    renderArticle: false,
+    renderArticleId: null
   }
 
   componentDidMount() {
+  debugger
     this.getArticles()
   }
 
@@ -38,6 +40,7 @@ class ListArticles extends Component {
   }
 
    renderArticleHandler = (chosenArticle) => {
+  debugger
      this.setState({
        renderArticle: true,
        chosenArticleId: chosenArticle 
@@ -54,21 +57,21 @@ class ListArticles extends Component {
     if (this.state.error_message) {
       error_message = <p>{ this.state.error_message }</p>
     }
-
-    if (articleData.length !== 0) {
+  if (articleData.length !== 0) {
       if (renderArticle === false) {
+        debugger
         renderListArticles = (
           <>
-            {articleData.data.map(art => {
-              return <div key={art.id}>
+            {articleData.data.map(article => {
+              return <div id={`article_${article.id}`} onClick={this.renderArticleHandler(article.id)} key={article.id}>
                 <Item.Group> 
                   <Item>
                     <Item.Image size='tiny' src='https://react.semantic-ui.com/images/wireframe/image.png' />
                     <Item.Content>
-                      <Item.Description>{art.publish_date}</Item.Description>
-                      <Item.Header as="a" id={`article_${art.id}`} onClick={this.renderArticleHandler(art.id)} key={art.id}>{art.title}</Item.Header> {/*, state: { id: `${art.id}`}*/}
-                      <Item.Meta name="article-content">{this.makeIngress(art.content, 15)}</Item.Meta>
-                      <Item.Extra>{art.author}</Item.Extra>
+                      <Item.Description>{article.publish_date}</Item.Description>
+                      <Item.Header as="h1">{article.title}</Item.Header>
+                      <Item.Meta name="article-content">{this.makeIngress(article.content, 15)}</Item.Meta>
+                      <Item.Extra>{article.author}</Item.Extra>
                     </Item.Content>
                   </Item>
                 </Item.Group> 
@@ -77,8 +80,9 @@ class ListArticles extends Component {
           </>
         )
       }
-
+    }
     if (renderArticle === true) {
+      debugger
       specificArticle = (
         <ViewArticle
           chosenArticle = {this.state.chosenArticleId}
@@ -86,7 +90,6 @@ class ListArticles extends Component {
         />
       )
     }
-   }
 
     return(
       <>
