@@ -14,16 +14,14 @@ const getData = async () => {
   }
 }
 
-const submitArticle = async (title, content, author, category, publish_date) => {
+const submitArticle = async (title, content, author) => {
   try {
     let response = await axios.post(
       apiUrl + 'articles',
       {
         title: title,
         content: content,
-        author: author,
-        category: category,
-        publish_date: publish_date
+        author: author
       }
     )
     return response
