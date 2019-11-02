@@ -13,6 +13,7 @@ class App extends Component {
         <CreateArticle />
         <Signup />
         <Login />
+        <PaymentForm />
       </div>
     )
   }
