@@ -17,15 +17,13 @@ class CheckoutForm extends Component {
   submitPayment = async (ev) => {
     ev.preventDefault()
     await this.props.stripe.createToken().then(({ token }) => {
-      token
-        ? this.stripePayment(token.id)
-        : this.state.message
+      token ? this.stripePayment(token.id) : <p>{this.state.message}</p>
     })
   }
 
   stripePayment = async (stripeToken) => {
     try {
-      let respose = await axios.post('/subscriptions', {
+      let response = await axios.post('/subscriptions', {
         stripeToken
       })
       if (response.status === 200) {
@@ -34,13 +32,14 @@ class CheckoutForm extends Component {
       }
     } catch (error) {
       this.setState({
-        message: response.data.errors
+        message: error.response.data.errors
       }) 
     }
   }
 
   render() {
     let stripeForm
+    let message
 
     if (this.state.message) {
       message = <p>{ this.state.message }</p>
@@ -86,7 +85,7 @@ class CheckoutForm extends Component {
     }
     return (
       <Container>
-        {StripeForm}
+        {stripeForm}
         {message}
       </Container>
     )

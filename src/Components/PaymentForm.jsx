@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { Elements, StripeProvider } from 'react-stripe-elements'
-import CheckoutForm from './Components/CheckoutForm'
+import CheckoutForm from '../Components/CheckoutForm'
 import { Container } from 'semantic-ui-react'
 
 class PaymentForm extends Component {
   render() {
-    let stripeApiKey = process.env.REACT_APP_API_STRIPE_KEY
     return (
       <Container>
-        <StripeProvider apiKey={stripeApiKey}>
+        <StripeProvider apiKey="pk_test_Go2keK39yfQ3pxYR2bpuewJ500aaZJcb0p">
           <div>
             <Elements>
               <CheckoutForm />

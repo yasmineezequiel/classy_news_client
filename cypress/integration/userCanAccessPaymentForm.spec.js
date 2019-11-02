@@ -7,6 +7,7 @@ describe('User gets payment form', () => {
       response: 'fixture:articles.json',
       status:200
     })
+    cy.visit('http://localhost:3001')
   })
 
   it('Successfully get payment form', () => {
