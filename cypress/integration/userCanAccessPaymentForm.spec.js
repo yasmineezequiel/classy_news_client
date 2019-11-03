@@ -2,20 +2,14 @@ describe('User gets payment form', () => {
   beforeEach(() => {
     cy.server()
     cy.route({
-      method: 'GET',
-      url:'http://localhost:3000/api/v1/articles',
-      response: 'fixture:articles.json',
-      status:200
+      method: 'POST',
+      url:'http://localhost:3000/api/v1/auth',
+      response: 'fixture:successful_user_signup.json'
     })
     cy.visit('http://localhost:3001')
   })
 
   it('Successfully get payment form', () => {
-    cy.route({
-      method: 'POST',
-      url:'http://localhost:3000/api/v1/auth',
-      response: 'fixture:successful_user_signup.json'
-    })
     cy.get('#signup-button').click()
     cy.get('#signup-form').within(()=> {
       cy.get('#nickname-input').type('nickname')

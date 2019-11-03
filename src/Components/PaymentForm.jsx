@@ -7,7 +7,7 @@ class PaymentForm extends Component {
   render() {
     return (
       <Container>
-        <StripeProvider apiKey="pk_test_Go2keK39yfQ3pxYR2bpuewJ500aaZJcb0p">
+        <StripeProvider apiKey="pk_test_Z5FeQqat78fR3y3S41JrTSTh00LLyGEvNZ">
           <div>
             <Elements>
               <CheckoutForm />
