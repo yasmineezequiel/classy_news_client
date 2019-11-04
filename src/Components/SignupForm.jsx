@@ -37,7 +37,6 @@ const SignupForm = (props) => {
             <input onChange={props.inputChangeHandler} placeholder='Password Confirmation' name='password_confirmation' id="password-confirmation" />
           </Form.Field>
           <Button onClick={props.handleSignup} id="submit-signup-form" type='submit'>Submit</Button>
-          <Button onClick={props.renderSignup} id="cancel-signup-form">Cancel</Button>
         </Form>
     </div>
   )

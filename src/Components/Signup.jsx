@@ -9,7 +9,6 @@ import { Button,
 
 class Signup extends Component {
   state = {
-    renderSignupForm: false,
     email: '',
     password: '',
     password_confirmation: '',
@@ -18,12 +17,6 @@ class Signup extends Component {
     city: '',
     country: 'Sweden',
     errorMessage: ''
-  }
-
-  renderSignup = () => {
-    this.setState({
-      renderSignupForm: !this.state.renderSignupForm
-    })
   }
 
   inputChangeHandler = (e) => {
@@ -54,23 +47,14 @@ class Signup extends Component {
     if (this.props.currentUser.isSignedIn) {
       welcomeMessage = <p id="welcome-message">Hello {this.props.currentUser.attributes.name}</p>
     } else {
-      if (this.state.renderSignupForm) {
-        signupForm = (
-          <div>
-            <SignupForm
-              inputChangeHandler = {this.inputChangeHandler}
-              handleSignup={this.handleSignup}
-              renderSignup={this.renderSignup}
-            />
-          </div>
-        )
-      } else {
-        signupForm = (
-          <div>
-            <Button id="signup-button" onClick={ this.renderSignup }>Sign Up</Button>
-          </div>
-        )
-      }
+      signupForm = (
+        <div>
+          <SignupForm
+            inputChangeHandler = {this.inputChangeHandler}
+            handleSignup={this.handleSignup}
+          />
+        </div>
+      )
     }
     if (this.state.errorMessage !== '') {
       errorMessage = this.state.errorMessage

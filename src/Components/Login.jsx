@@ -3,22 +3,14 @@ import '../index.css';
 import LoginForm from './LoginForm';
 import { signInUser } from '../state/actions/reduxTokenAuthConfig';
 import { connect } from 'react-redux';
-import { Button, 
-         Container,
+import { Container,
          Grid  } from 'semantic-ui-react';
 
 class Login extends Component {
   state = {
-    renderLoginForm: false,
     email: '',
     password: '',
     errorMessage: ''
-  }
-
-  renderLogin = () => {
-    this.setState({
-      renderLoginForm: !this.state.renderLoginForm
-    })
   }
 
   inputChangeHandler = (e) => {
@@ -47,23 +39,14 @@ class Login extends Component {
     if (this.props.currentUser.isSignedIn) {
       welcomeMessage = <p id="welcome-message">Hello {this.props.currentUser.attributes.name}</p>
     } else {
-      if (this.state.renderLoginForm) {
-        loginForm = (
-          <div>
-            <LoginForm
-              inputChangeHandler = {this.inputChangeHandler}
-              handleLogin={this.handleLogin}
-              renderLogin={this.renderLogin}
-            />
-          </div>
-        )
-      } else {
-        loginForm = (
-          <div>
-            <Button id="login-button" onClick={ this.renderLogin }>Login</Button>
-          </div>
-        )
-      }
+      loginForm = (
+        <div>
+          <LoginForm
+            inputChangeHandler = {this.inputChangeHandler}
+            handleLogin={this.handleLogin}
+          />
+        </div>
+      )
     }
     if (this.state.errorMessage !== '') {
       errorMessage = this.state.errorMessage

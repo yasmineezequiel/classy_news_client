@@ -14,7 +14,6 @@ const LoginForm = (props) => {
             <input onChange={props.inputChangeHandler} placeholder='Password' name='password' id="password-input" />
           </Form.Field>
           <Button onClick={props.handleLogin} id="submit-login-form" type='submit'>Submit</Button>
-          <Button onClick={props.renderLogin} id="cancel-login-form">Cancel</Button>
         </Form>
     </div>
   )
