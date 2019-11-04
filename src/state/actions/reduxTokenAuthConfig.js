@@ -8,7 +8,8 @@ const config = {
     nickname: "nickname",
     city: "city",
     country: "country",
-    role: "role"
+    role: "role",
+    email: "email"
   },
   userRegistrationAttributes: {
     uid: "uid",
@@ -16,7 +17,8 @@ const config = {
     nickname: "nickname",
     city: "city",
     country: "country",
-    role: "role"
+    role: "role",
+    email: "email"
   }
 }
 
