@@ -2,7 +2,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 
 const Internationalization = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   return (
     <>
       <h1>{t('weather.title')}</h1>

@@ -23,5 +23,27 @@
     "password": "Lösenord",
     "submit": "Skapa",
     "cancel": "Avbryt"
+  },
+  "signup": {
+    "hello": "Hej",
+    "signup": "Skapa konto"
+  },
+  "signupform": {
+    "name": "Namn",
+    "nickname": "Smeknamn",
+    "city": "Stad",
+    "country": "Land",
+    "sweden" : "Sverige",
+    "brazil": "Brasilien",
+    "germany": "Tyskland",
+    "iceland": "Island",
+    "portugal": "Portugal",
+    "russia": "Ryssland",
+    "usa": "USA",
+    "email": "Epost",
+    "password": "Lösenord",
+    "passwordconfirmation": "Bekräfta lösenord",
+    "submit": "Skapa",
+    "cancel": "Avbryt"
   }
 }

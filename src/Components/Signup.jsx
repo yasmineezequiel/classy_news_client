@@ -3,6 +3,7 @@ import '../index.css';
 import SignupForm from './SignupForm';
 import { registerUser } from '../state/actions/reduxTokenAuthConfig';
 import { connect } from 'react-redux';
+import { useTranslation } from 'react-i18next'
 import { Button, 
          Container,
          Grid  } from 'semantic-ui-react';
@@ -44,15 +45,14 @@ class Signup extends Component {
       })
   }
 
-
-  
   render() {
+    const { t } = useTranslation();
     let signupForm
     let welcomeMessage
     let errorMessage
 
     if (this.props.currentUser.isSignedIn) {
-      welcomeMessage = <p id="welcome-message">Hello {this.props.currentUser.attributes.name}</p>
+      welcomeMessage = <p id="welcome-message">{t('signup.hello')} {this.props.currentUser.attributes.name}</p>
     } else {
       if (this.state.renderSignupForm) {
         signupForm = (
@@ -67,7 +67,7 @@ class Signup extends Component {
       } else {
         signupForm = (
           <div>
-            <Button id="signup-button" onClick={ this.renderSignup }>Sign Up</Button>
+            <Button id="signup-button" onClick={ this.renderSignup }>{t('signup.signup')}</Button>
           </div>
         )
       }

@@ -23,5 +23,27 @@
     "password": "Password",
     "submit": "Submit",
     "cancel": "Cancel"
+  },
+  "signup": {
+    "hello": "Hello",
+    "signup": "Sign Up"
+  },
+  "signupform": {
+    "name": "Name",
+    "nickname": "Nickname",
+    "city": "City",
+    "country": "Country",
+    "sweden": "Sweden",
+    "brazil": "Brazil",
+    "germany": "Germany",
+    "iceland": "Iceland",
+    "portugal": "Portugal",
+    "russia": "Russia",
+    "usa": "USA",
+    "email": "Email",
+    "password": "Password",
+    "passwordconfirmation": "Password Confirmation",
+    "submit": "Submit",
+    "cancel": "Cancel"
   }
 }

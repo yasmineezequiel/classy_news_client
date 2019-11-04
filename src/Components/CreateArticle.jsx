@@ -43,7 +43,7 @@
     render() {
       let articleForm
       let responseMessage
-      const { t } = useTranslation()
+      const { t } = useTranslation();
 
       if (this.state.responseMessage) {
       responseMessage = <p id="response-message">{this.state.responseMessage}</p>

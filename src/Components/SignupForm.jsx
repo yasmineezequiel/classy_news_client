@@ -1,43 +1,45 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { Form,
          Button 
 } from "semantic-ui-react";
 
 const SignupForm = (props) => {
+  const { t } = useTranslation();
   return (
     <div>
       <Form id='signup-form'>
           <Form.Field>
-            <input onChange={props.inputChangeHandler} placeholder='Name' name='name' id="name-input" />
+            <input onChange={props.inputChangeHandler} placeholder={t('signupform.name')} name='name' id="name-input" />
           </Form.Field>
           <Form.Field>
-            <input onChange={props.inputChangeHandler} placeholder='Nickname' name='nickname' id="nickname-input" />
+            <input onChange={props.inputChangeHandler} placeholder={t('signupform.nickname')} name='nickname' id="nickname-input" />
           </Form.Field>
           <Form.Field>
-            <input onChange={props.inputChangeHandler} placeholder='City' name='city' id="city-input" />
+            <input onChange={props.inputChangeHandler} placeholder={t('signupform.city')} name='city' id="city-input" />
           </Form.Field>
           <Form.Field>
-            <select className="select-css" onChange={props.inputChangeHandler} placeholder='Country' name='country' id="country-input">
-              <option value='Sweden'>Sweden</option>
-              <option value='Brazil'>Brazil</option>
-              <option value='Germany'>Germany</option>
-              <option value='Iceland'>Iceland</option>
-              <option value='Portugal'>Portugal</option>
-              <option value='Russia'>Russia</option>
-              <option value='USA'>USA</option>
+            <select className="select-css" onChange={props.inputChangeHandler} placeholder={t('signupform.country')} name='country' id="country-input">
+              <option value='Sweden'>{t('signupform.sweden')}</option>
+              <option value='Brazil'>{t('signupform.brazil')}</option>
+              <option value='Germany'>{t('signupform.germany')}</option>
+              <option value='Iceland'>{t('signupform.iceland')}</option>
+              <option value='Portugal'>{t('signupform.portugal')}</option>
+              <option value='Russia'>{t('signupform.russia')}</option>
+              <option value='USA'>{t('signupform.usa')}</option>
             </select>
           </Form.Field>
           <Form.Field>
-            <input onChange={props.inputChangeHandler} placeholder='Email' name='email' id="email-input" />
+            <input onChange={props.inputChangeHandler} placeholder={t('signupform.email')} name='email' id="email-input" />
           </Form.Field>
           <Form.Field>
-            <input onChange={props.inputChangeHandler} placeholder='Password' name='password' id="password-input" />
+            <input onChange={props.inputChangeHandler} placeholder={t('signupform.password')} name='password' id="password-input" />
           </Form.Field>
           <Form.Field>
-            <input onChange={props.inputChangeHandler} placeholder='Password Confirmation' name='password_confirmation' id="password-confirmation" />
+            <input onChange={props.inputChangeHandler} placeholder={t('signupform.passwordconfirmation')} name='password_confirmation' id="password-confirmation" />
           </Form.Field>
-          <Button onClick={props.handleSignup} id="submit-signup-form" type='submit'>Submit</Button>
-          <Button onClick={props.renderSignup} id="cancel-signup-form">Cancel</Button>
+          <Button onClick={props.handleSignup} id="submit-signup-form" type='submit'>{t('signupform.submit')}</Button>
+          <Button onClick={props.renderSignup} id="cancel-signup-form">{t('signupform.cancel')}</Button>
         </Form>
     </div>
   )
