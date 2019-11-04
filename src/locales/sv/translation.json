@@ -13,5 +13,15 @@
     "content": "Innehåll",
     "author": "Författare",
     "category": "Kategori"
+  },
+  "login": {
+    "hello": "Hej",
+    "login": "Logga in"
+  },
+  "loginform": {
+    "email": "Epost",
+    "password": "Lösenord",
+    "submit": "Skapa",
+    "cancel": "Avbryt"
   }
 }

@@ -13,5 +13,15 @@
     "content": "Content",
     "author": "Author",
     "category": "Category"
+  },
+  "login": {
+    "hello": "Hello",
+    "login": "Login"
+  },
+  "loginform": {
+    "email": "Email",
+    "password": "Password",
+    "submit": "Submit",
+    "cancel": "Cancel"
   }
 }

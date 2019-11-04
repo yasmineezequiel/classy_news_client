@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { Button, 
          Container,
          Grid  } from 'semantic-ui-react';
+import { useTranslation } from 'react-i18next';
 
 class Login extends Component {
   state = {
@@ -45,7 +46,7 @@ class Login extends Component {
     let errorMessage
 
     if (this.props.currentUser.isSignedIn) {
-      welcomeMessage = <p id="welcome-message">Hello {this.props.currentUser.attributes.name}</p>
+      welcomeMessage = <p id="welcome-message">{t('login.hello')} {this.props.currentUser.attributes.name}</p>
     } else {
       if (this.state.renderLoginForm) {
         loginForm = (
@@ -60,7 +61,7 @@ class Login extends Component {
       } else {
         loginForm = (
           <div>
-            <Button id="login-button" onClick={ this.renderLogin }>Login</Button>
+            <Button id="login-button" onClick={ this.renderLogin }>{t('login.login')}</Button>
           </div>
         )
       }
