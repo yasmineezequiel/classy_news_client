@@ -36,8 +36,9 @@ class CheckoutForm extends Component {
         this.setState({ renderCheckoutForm: false })
       }
     } catch (error) {
+      debugger
       this.setState({
-        message: error.response.data.errors
+        message: error.response.data.message
       }) 
     }
   }

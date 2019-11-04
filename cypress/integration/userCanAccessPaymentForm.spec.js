@@ -23,6 +23,6 @@ describe('User gets payment form', () => {
     cy.get('#submit-signup-form').click()
     cy.get('#subscribe-button').click()
     cy.get('#payment-form').should('exist')
-  });
+  })
 })
 
