@@ -26,7 +26,7 @@ class ListArticles extends Component {
       })
     } else {
       this.setState({
-        articles: result
+        articles: result.data
       })
     }
   }
@@ -46,7 +46,7 @@ class ListArticles extends Component {
     if (articleData.length !== 0) {
       renderListArticles = (
         <>
-          {articleData.data.map(art => {
+          {articleData.articles.map(art => {
             return <div key={art.id}>
               <Item.Group> 
                 <Item>
@@ -62,14 +62,6 @@ class ListArticles extends Component {
             </div>
           })}
         </>
-      )
-    } else {
-        return(
-          renderListArticles = (
-          <div>
-            {this.state.error_message}
-          </div>
-        )
       )
     }
     

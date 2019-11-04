@@ -16,12 +16,7 @@ describe('User can sign up', () => {
       }
     })
 
-    cy.get('#login-button').click()
-    cy.get('#login-form').within(()=> {
-      cy.get('#email-input').type('user@mail.com')
-      cy.get('#password-input').type('password')
-    })
-    cy.get('#submit-login-form').click()
+    cy.user_login('user@mail.com', 'password')
     cy.get('#welcome-message').should('contain', 'Hello name')
   })
 

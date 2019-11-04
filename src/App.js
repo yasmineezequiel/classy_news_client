@@ -5,24 +5,37 @@ import Login from './Components/Login'
 import './index.css';
 import CreateArticle from './Components/CreateArticle'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom' 
+import { Redirect } from 'react-router-dom'
 import NavBar from './Components/NavBar'
+import { connect } from 'react-redux';
 
-const App = ({ user }) => {
+const App = ({ currentUser }) => {
   return (
     <Router>
       <>
         <NavBar />
         <Switch>
-          <Route exact path='/' component={ListArticles} />
-          {user.role === "journalist" && (
-            <Route exact path='/create-article' component={CreateArticle} />
-          )}
           <Route path='/signup' component={Signup} />
           <Route path='/login' component={Login} />
+          <Route exact path='/' component={ListArticles} />
+          {currentUser.attributes.role === 'journalist' ? (
+            <Route exact path='/create-article' component={CreateArticle} />
+          ) : (
+            <Redirect to='/' />
+          )}
         </Switch>
       </>
     </Router>
   )
 }
 
-export default App
+const mapStateToProps = state => {
+  return {
+    currentUser: state.reduxTokenAuth.currentUser
+  }
+}
+
+export default connect(
+  mapStateToProps, 
+  null
+  )(App)
