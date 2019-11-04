@@ -22,15 +22,4 @@ describe('user can view chosen article', () => {
         cy.get('#article-author').should('contain', 'Lauren Lion')
       })
   })
-
-  it('sees error message for chosen non-existent article', () => {
-    cy.server()
-    cy.route({
-      method: 'GET',
-      url: 'http://localhost:3000/api/v1/articles/1',
-      status: 404
-    })
-    cy.visit('http://localhost:3001')
-    cy.contains('Request failed with status code 404')
-  })
 })
