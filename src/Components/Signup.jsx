@@ -3,7 +3,7 @@ import '../index.css';
 import SignupForm from './SignupForm';
 import { registerUser } from '../state/actions/reduxTokenAuthConfig';
 import { connect } from 'react-redux';
-import { useTranslation } from 'react-i18next'
+import { withTranslation } from 'react-i18next';
 import { Button, 
          Container,
          Grid  } from 'semantic-ui-react';
@@ -102,7 +102,8 @@ const mapDispatchToProps = {
   registerUser
 }
 
-export default connect(
+export default withTranslation()
+connect(
   mapStateToProps,  
   mapDispatchToProps
 )(Signup);

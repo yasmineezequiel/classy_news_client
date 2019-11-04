@@ -2,7 +2,6 @@ import React from 'react'
 import { Form,
          Button 
 } from "semantic-ui-react";
-import { useTranslation } from 'react-i18next'
 
 const LoginForm = (props) => {
   const { t } = this.props;

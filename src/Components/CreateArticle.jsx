@@ -1,7 +1,7 @@
  import React, { Component } from 'react'
  import { submitArticle } from '../Modules/RequestArticles'
  import { Form, Button, Container } from 'semantic-ui-react'
- import { useTranslation } from 'react-i18next'
+ import { withTranslation } from 'react-i18next';
 
  class CreateArticle extends Component {
     state = {
@@ -43,7 +43,7 @@
     render() {
       let articleForm
       let responseMessage
-      const { t } = useTranslation();
+      const { t } = this.props;
 
       if (this.state.responseMessage) {
       responseMessage = <p id="response-message">{this.state.responseMessage}</p>
@@ -88,4 +88,4 @@
     }
  }
 
- export default CreateArticle
+ export default withTranslation()(CreateArticle)

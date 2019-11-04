@@ -1,4 +1,4 @@
-import React, { Component, Suspense } from 'react'
+import React, { Suspense } from 'react'
 import ListArticles from './Components/ListArticles'
 import Signup from './Components/Signup'
 import Login from './Components/Login'

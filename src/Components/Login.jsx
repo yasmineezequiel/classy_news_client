@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { Button, 
          Container,
          Grid  } from 'semantic-ui-react';
-import { useTranslation } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 class Login extends Component {
   state = {
@@ -97,7 +97,8 @@ const mapDispatchToProps = {
   signInUser
 }
 
-export default connect(
+export default withTranslation() 
+connect(
   mapStateToProps,  
   mapDispatchToProps
 )(Login);
