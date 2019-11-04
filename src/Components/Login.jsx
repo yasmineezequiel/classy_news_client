@@ -41,7 +41,7 @@ class Login extends Component {
   }
 
   render() {
-    const { t } = useTranslation();
+    const { t } = this.props;
     let loginForm
     let welcomeMessage
     let errorMessage

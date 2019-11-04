@@ -46,7 +46,7 @@ class Signup extends Component {
   }
 
   render() {
-    const { t } = useTranslation();
+    const { t } = this.props;
     let signupForm
     let welcomeMessage
     let errorMessage

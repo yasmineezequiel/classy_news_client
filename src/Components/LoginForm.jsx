@@ -5,7 +5,7 @@ import { Form,
 import { useTranslation } from 'react-i18next'
 
 const LoginForm = (props) => {
-  const { t } = useTranslation();
+  const { t } = this.props;
   return (
     <div>
       <Form id='login-form'>

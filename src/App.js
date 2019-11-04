@@ -6,20 +6,17 @@ import './index.css';
 import CreateArticle from './Components/CreateArticle'
 import Internationalization from './Components/Internationalization';
 
-class App extends Component {
-  render() {
-    return (
-      <>
-        <Suspense fallback={(<div>Loading</div>)}>
-          <ListArticles />
-          <CreateArticle />
-          <Signup />
-          <Login />
-          <Internationalization />
-        </Suspense>
-      </>
-    )
-  }
+const App = () => {
+  return (
+    <>
+      <Suspense fallback={(<div>Loading</div>)}>
+        <ListArticles />
+        <CreateArticle />
+        <Signup />
+        <Login />
+        <Internationalization />
+      </Suspense>
+    </>
+  )
 }
-
-export default App;
+export default App

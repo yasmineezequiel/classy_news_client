@@ -5,7 +5,7 @@ import { Form,
 } from "semantic-ui-react";
 
 const SignupForm = (props) => {
-  const { t } = useTranslation();
+  const { t } = this.props;
   return (
     <div>
       <Form id='signup-form'>
