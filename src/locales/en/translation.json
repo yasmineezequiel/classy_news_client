@@ -1,0 +1,17 @@
+{
+  "weather": {
+    "title": "It's Chilly"
+  },
+  "news": {
+    "title": "Fantastic Weather"
+  },
+  "createarticle": {
+    "submit": "Submit Article",
+    "write": "Write Article",
+    "cancel": "Cancel",
+    "title": "Title",
+    "content": "Content",
+    "author": "Author",
+    "category": "Category"
+  }
+}

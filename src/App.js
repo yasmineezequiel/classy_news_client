@@ -10,11 +10,11 @@ class App extends Component {
   render() {
     return (
       <>
-        <ListArticles />
-        <CreateArticle />
-        <Signup />
-        <Login />
         <Suspense fallback={(<div>Loading</div>)}>
+          <ListArticles />
+          <CreateArticle />
+          <Signup />
+          <Login />
           <Internationalization />
         </Suspense>
       </>

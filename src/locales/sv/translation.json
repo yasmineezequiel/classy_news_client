@@ -1,0 +1,17 @@
+{
+  "weather": {
+    "title": "Det är kyligt"
+  },
+  "news": {
+    "title": "Fantastiskt väder"
+  },
+  "createarticle": {
+    "submit": "Spara och skapa Artikel",
+    "write": "Skriv Artikel", 
+    "cancel": "Avbryt",
+    "title": "Titel",
+    "content": "Innehåll",
+    "author": "Författare",
+    "category": "Kategori"
+  }
+}

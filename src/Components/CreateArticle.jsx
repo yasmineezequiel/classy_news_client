@@ -1,6 +1,7 @@
  import React, { Component } from 'react'
  import { submitArticle } from '../Modules/RequestArticles'
  import { Form, Button, Container } from 'semantic-ui-react'
+ import { useTranslation } from 'react-i18next'
 
  class CreateArticle extends Component {
     state = {
@@ -42,6 +43,7 @@
     render() {
       let articleForm
       let responseMessage
+      const { t } = useTranslation()
 
       if (this.state.responseMessage) {
       responseMessage = <p id="response-message">{this.state.responseMessage}</p>
@@ -53,20 +55,20 @@
             <Container>
               <Form id="article-form">
                 <Form.Field>
-                  <input name="title" id="title-input" placeholder="Title" onBlur={this.inputHandler} />
+                  <input name="title" id="title-input" placeholder={t('createarticle.title')} onBlur={this.inputHandler} />
                 </Form.Field>
                 <Form.Field>
-                  <input name="content" id="content-input" placeholder="Content" onBlur ={this.inputHandler}/>
+                  <input name="content" id="content-input" placeholder={t('createarticle.content')} onBlur ={this.inputHandler}/>
                 </Form.Field>
                 <Form.Field>
-                  <input name="author" id="author-input" placeholder="Author" onBlur ={this.inputHandler}/>
+                  <input name="author" id="author-input" placeholder={t('createarticle.author')} onBlur ={this.inputHandler}/>
                 </Form.Field>
                 <Form.Field>
-                  <input name="category" id="category-input" placeholder="Category" onBlur ={this.inputHandler}/>
+                  <input name="category" id="category-input" placeholder={t('createarticle.category')} onBlur ={this.inputHandler}/>
                 </Form.Field>
                 <Form.Field>
-                  <Button id="submit-article" onClick={this.submitArticleHandler.bind(this)}>Submit Article</Button>
-                  <Button id="cancel-article" onClick={this.renderForm}>Cancel</Button>
+                  <Button id="submit-article" onClick={this.submitArticleHandler.bind(this)}>{t('createarticle.submit')}</Button>
+                  <Button id="cancel-article" onClick={this.renderForm}>{t('createarticle.cancel')}</Button>
                 </Form.Field>
               </Form>
             </Container>
@@ -74,7 +76,7 @@
         )
       } else {
         articleForm = (
-          <Button onClick={this.renderForm} id="create-article">write Article</Button>
+          <Button onClick={this.renderForm} id="create-article">{t('createarticle.write')}</Button>
         )
       }
       return(
