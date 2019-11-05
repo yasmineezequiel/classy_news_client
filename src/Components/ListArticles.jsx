@@ -58,7 +58,7 @@ class ListArticles extends Component {
 
     if (articleData.length !== 0) {
       debugger
-        if (renderArticle === false) {
+        if (!renderArticle) {
           renderListArticles = (
             <>
               {articleData.articles.map(article => {
@@ -80,7 +80,7 @@ class ListArticles extends Component {
           )
         }
       }
-      if (renderArticle === true) {
+      if (renderArticle) {
         specificArticle = (
           <ViewArticle
             chosenArticle = {this.state.chosenArticleId}
