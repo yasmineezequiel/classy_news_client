@@ -26,3 +26,22 @@ describe('User gets payment form', () => {
   })
 })
 
+
+describe('Subscribe button is only visible for signed in user', () => {
+  beforeEach(() => {
+    cy.server()
+    cy.route({
+      method: 'POST',
+      url:'http://localhost:3000/api/v1/articles',
+      response: 'fixture:articles.json'
+    })
+    cy.visit('http://localhost:3001')
+  })
+
+  it('is not visible for visitor', () => {
+    cy.get('h1').should('contain', 'Classy News')
+    cy.not().contains('#submit-signup-form')
+      .contains('#signup-button')
+      .contains('#subscribe-button')
+  })
+})

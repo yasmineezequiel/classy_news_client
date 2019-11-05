@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { Button, 
          Container,
          Grid  } from 'semantic-ui-react';
+import PaymentForm from './PaymentForm'
 
 class Signup extends Component {
   state = {
@@ -52,7 +53,12 @@ class Signup extends Component {
     let errorMessage
 
     if (this.props.currentUser.isSignedIn) {
-      welcomeMessage = <p id="welcome-message">Hello {this.props.currentUser.attributes.name}</p>
+          welcomeMessage = (
+            <div>
+              <p id="welcome-message">Hello {this.props.currentUser.attributes.name}</p>
+              <PaymentForm />
+            </div>
+        )
     } else {
       if (this.state.renderSignupForm) {
         signupForm = (

@@ -103,5 +103,3 @@ describe('User can pay for subscription', () => {
     cy.contains('Something went wrong, please try again.')
   })
 })
-
-

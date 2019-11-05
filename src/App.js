@@ -4,8 +4,8 @@ import Signup from './Components/Signup'
 import Login from './Components/Login'
 import './index.css';
 import CreateArticle from './Components/CreateArticle'
-import PaymentForm from './Components/PaymentForm'
 
+console.log(process.env.REACT_APP_STRIPE_API_KEY)
 class App extends Component {
   render() {
     return (
@@ -14,7 +14,6 @@ class App extends Component {
         <CreateArticle />
         <Signup />
         <Login />
-        <PaymentForm />
       </div>
     )
   }
