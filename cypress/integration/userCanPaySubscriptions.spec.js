@@ -20,6 +20,7 @@ describe('User can pay for subscription', () => {
       cy.get('#password-input').type('password')
       cy.get('#password-confirmation').type('password')
     })
+    cy.get('#paymentform-button').click()
     cy.get('#submit-signup-form').click()
     cy.route({
       method: 'POST',
@@ -67,6 +68,7 @@ describe('User can pay for subscription', () => {
       cy.get('#password-input').type('password')
       cy.get('#password-confirmation').type('password')
     })
+    cy.get('#paymentform-button').click()
     cy.get('#submit-signup-form').click()
     cy.route({
       method: 'POST',
