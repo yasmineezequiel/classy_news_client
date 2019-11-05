@@ -15,23 +15,18 @@ class ListArticles extends Component {
     this.getArticles()
   }
 
-  setErrorMessage = (error) => {
-    this.setState({
-      error_message: error
-    })
-  }
-
   makeIngress = (content, wordcount) => {
     let ingress = content.split(' ').slice(0, wordcount).join(' ')
     return ingress + ' ...'
   }
 
   async getArticles() {
-  debugger
     let result = await getData()
 
-    if (result.status === 400) {
-      this.setErrorMessage(result.error_message)
+    if (result.error_message) {
+      this.setState({
+        error_message: result.error_message
+      })
     } else {
       this.setState({
         articles: result
@@ -63,7 +58,7 @@ class ListArticles extends Component {
                 return <div id={`article_${article.id}`} onClick={() => this.renderArticleHandler(article.id)} key={article.id}>
                   <Item.Group> 
                     <Item>
-                      <Item.Image size='tiny' src='https://react.semantic-ui.com/images/wireframe/image.png' />
+                      <Item.Image size='tiny' src={article.image} />
                       <Item.Content>
                         <Item.Description>{article.publish_date}</Item.Description>
                         <Item.Header as="h1">{article.title}</Item.Header>
