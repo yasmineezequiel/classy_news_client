@@ -47,8 +47,7 @@ class Signup extends Component {
   }
   
   render() {
-    let signupForm
-    let errorMessage
+    let signupForm, welcomeMessage, errorMessage
 
     if (this.props.currentUser.isSignedIn) {
           signupForm = ( <PaymentForm /> )
@@ -71,8 +70,8 @@ class Signup extends Component {
         )
       }
     }
-    if (this.state.errorMessage !== '') {
-      errorMessage = this.state.errorMessage
+    if (this.state.errorMessage) {
+      errorMessage = <p>{this.state.errorMessage}</p>
     }
 
     return (
@@ -81,8 +80,9 @@ class Signup extends Component {
           <Grid.Column>
             <div>
               { signupForm }
+              { welcomeMessage }
+              { errorMessage }
             </div>
-            <p id="error-message">{ errorMessage }</p>
           </Grid.Column>
         </Grid>   
       </Container>  

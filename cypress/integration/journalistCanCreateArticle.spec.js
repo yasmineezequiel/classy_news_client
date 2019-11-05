@@ -8,13 +8,13 @@ describe('User can create article', () => {
       status: 200
     })
     cy.visit('http://localhost:3001')
-    cy.get('#create-article').click()
+    cy.get('#create-article').click({force: true})
 
     cy.get('#article-form').within(() => {
-      cy.get('#title-input').type('Trump has gone insane')
-      cy.get('#content-input').type('Trump has been diagnosed with crazy syndrome')
-      cy.get('#author-input').type('Faraz')
-      cy.get('button[type="button"]').click()
+      cy.get('#title-input').type('Trump has gone insane', {force: true})
+      cy.get('#content-input').type('Trump has been diagnosed with crazy syndrome', {force: true})
+      cy.get('#author-input').type('Faraz', {force: true})
+      cy.get('button[type="button"]').click({force: true})
       cy.get('.fileContainer').within(() => {
         const fileName = 'test.jpg';
         cy.fixture(fileName).then(fileContent => {
@@ -22,7 +22,7 @@ describe('User can create article', () => {
         });
       })
 
-      cy.get('#submit-article').click()
+      cy.get('#submit-article').click({force: true})
     })
     cy.get('#response-message').should('contain', 'Your article was submitted for review')
   })
