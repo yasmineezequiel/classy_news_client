@@ -5,7 +5,6 @@ import Login from './Components/Login'
 import './index.css';
 import CreateArticle from './Components/CreateArticle'
 
-console.log(process.env.REACT_APP_STRIPE_API_KEY)
 class App extends Component {
   render() {
     return (
