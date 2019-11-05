@@ -22,30 +22,17 @@ describe('User can access payment form', () => {
     })
     cy.get('#submit-signup-form').click()
     cy.get('#paymentform-button').click()
-    cy.get('#subscribe-button').click()
-    cy.route({
-      method: 'POST',
-      url: 'http://localhost:3000/api/v1/subscriptions',
-      response: 'fixture:successful_subscription_payment.json',
-      status: 200
-    })
     cy.get('#payment-form').should('exist')
   })
-})
 
-describe('Subscribe button is only visible for signed in user', () => {
-  beforeEach(() => {
+  it('is not visible for visitor', () => {
     cy.server()
     cy.route({
-      method: 'POST',
+      method: 'GET',
       url:'http://localhost:3000/api/v1/articles',
       response: 'fixture:articles.json'
     })
     cy.visit('http://localhost:3001')
-  })
-
-  it('is not visible for visitor', () => {
-    cy.get('#signup-button').should('contain', 'Sign Up')
     cy.get('#payment-form').should('not.exist')
   })
 })

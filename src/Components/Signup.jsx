@@ -18,7 +18,7 @@ class Signup extends Component {
     name: '',
     city: '',
     country: 'Sweden',
-    role: 'user',
+    role: '',
     errorMessage: ''
   }
 
