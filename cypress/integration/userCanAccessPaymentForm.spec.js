@@ -33,7 +33,6 @@ describe('User can access payment form', () => {
   })
 })
 
-
 describe('Subscribe button is only visible for signed in user', () => {
   beforeEach(() => {
     cy.server()
