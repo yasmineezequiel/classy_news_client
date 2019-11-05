@@ -47,11 +47,9 @@ class ListArticles extends Component {
   }
 
   render() {
-    let renderListArticles;
+    let renderListArticles, specificArticle, error_message
     let renderArticle = this.state.renderArticle
     const articleData = this.state.articles
-    let specificArticle
-    let error_message
 
     if (this.state.error_message) {
       error_message = <p>{ this.state.error_message }</p>
