@@ -4,7 +4,7 @@ import { getArticle } from '../Modules/RequestArticles'
 
 class ViewArticle extends Component {
   state = {
-    article: null,
+    article: null
   }
 
   async componentDidMount() {
