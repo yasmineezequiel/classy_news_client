@@ -63,7 +63,7 @@ class ListArticles extends Component {
                 return <div id={`article_${article.id}`} onClick={() => this.renderArticleHandler(article.id)} key={article.id}>
                   <Item.Group> 
                     <Item>
-                      <Item.Image size='tiny' src={art.image} />
+                      <Item.Image size='tiny' src={article.image} />
                       <Item.Content>
                         <Item.Description>{article.publish_date}</Item.Description>
                         <Item.Header as="h1">{article.title}</Item.Header>
