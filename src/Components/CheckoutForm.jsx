@@ -18,11 +18,7 @@ class CheckoutForm extends Component {
   submitPayment = async (ev) => {
     ev.preventDefault()
     await this.props.stripe.createToken().then(({ token }) => {
-      token 
-      ? this.stripePayment(token.id) 
-      : this.setState({
-        message: this.state.message
-      })
+      token && this.stripePayment(token.id) 
     })
   }
 
