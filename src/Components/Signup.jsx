@@ -45,8 +45,6 @@ class Signup extends Component {
         this.setState({errorMessage: error.response.data.errors.full_messages[0]}) 
       })
   }
-
-
   
   render() {
     let signupForm
