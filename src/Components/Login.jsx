@@ -69,6 +69,10 @@ class Login extends Component {
       errorMessage = this.state.errorMessage
     }
 
+    if (this.props.currentUser.isSignedIn) {
+      
+    }
+
     return (
       <Container>
         <Grid centered columns={1}>

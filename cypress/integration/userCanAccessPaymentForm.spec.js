@@ -21,6 +21,7 @@ describe('User can access payment form', () => {
       cy.get('#password-confirmation').type('password')
     })
     cy.get('#submit-signup-form').click()
+    cy.get('#paymentform-button').click()
     cy.get('#subscribe-button').click()
     cy.route({
       method: 'POST',
