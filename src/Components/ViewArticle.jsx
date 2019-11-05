@@ -8,7 +8,6 @@ class ViewArticle extends Component {
   }
 
   async componentDidMount() {
-  debugger
     let response = await getArticle(this.props.chosenArticle)
     if (response.status === 200) {
       this.setState({
