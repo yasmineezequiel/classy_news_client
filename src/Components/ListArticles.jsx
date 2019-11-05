@@ -57,10 +57,11 @@ class ListArticles extends Component {
     }
 
     if (articleData.length !== 0) {
+      debugger
         if (renderArticle === false) {
           renderListArticles = (
             <>
-              {articleData.map(article => {
+              {articleData.articles.map(article => {
                 return <div id={`article_${article.id}`} onClick={() => this.renderArticleHandler(article.id)} key={article.id}>
                   <Item.Group> 
                     <Item>
