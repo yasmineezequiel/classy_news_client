@@ -45,7 +45,6 @@ class Login extends Component {
     let errorMessage
 
     if (this.props.currentUser.isSignedIn) {
-      debugger
       welcomeMessage = <p id="welcome-message">Hello {this.props.currentUser.attributes.name}</p> 
     } else {
       if (this.state.renderLoginForm) {

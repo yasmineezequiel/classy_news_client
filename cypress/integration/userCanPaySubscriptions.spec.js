@@ -20,8 +20,8 @@ describe('User can pay for subscription', () => {
       cy.get('#password-input').type('password')
       cy.get('#password-confirmation').type('password')
     })
-    cy.get('#paymentform-button').click()
     cy.get('#submit-signup-form').click()
+    cy.get('#paymentform-button').click()
     cy.route({
       method: 'POST',
       url: 'http://localhost:3000/api/v1/subscriptions',
@@ -68,8 +68,8 @@ describe('User can pay for subscription', () => {
       cy.get('#password-input').type('password')
       cy.get('#password-confirmation').type('password')
     })
-    cy.get('#paymentform-button').click()
     cy.get('#submit-signup-form').click()
+    cy.get('#paymentform-button').click()
     cy.route({
       method: 'POST',
       url: 'http://localhost:3000/api/v1/subscriptions',
