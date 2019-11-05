@@ -27,7 +27,6 @@ class CheckoutForm extends Component {
   }
 
   stripePayment = async (stripeToken) => {
-    debugger
     try {
       let response = await axios.post('http://localhost:3000/api/v1/subscriptions', {
         stripeToken 
@@ -39,7 +38,6 @@ class CheckoutForm extends Component {
         this.setState({ renderCheckoutForm: false })
       }
     } catch (error) {
-      debugger
       this.setState({
         message: error.response.data.message
       }) 

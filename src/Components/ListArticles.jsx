@@ -20,7 +20,7 @@ class ListArticles extends Component {
   async getArticles() {
     let result = await getData()
 
-    if (result.status === 400) {
+    if (result.error_message) {
       this.setState({
         error_message: result.error_message
       })
@@ -46,7 +46,7 @@ class ListArticles extends Component {
     if (articleData.length !== 0) {
       renderListArticles = (
         <>
-          {articleData.data.map(art => {
+          {articleData.map(art => {
             return <div key={art.id}>
               <Item.Group> 
                 <Item>

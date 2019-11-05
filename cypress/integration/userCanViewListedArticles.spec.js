@@ -24,8 +24,9 @@ describe('user can view listed articles', () => {
       method: 'GET',
       url: 'http://localhost:3000/api/v1/articles',
       status: 400,
+      response: {}
     })
     cy.visit('http://localhost:3001')
-    cy.contains('Network Error')
+    cy.contains('Request failed with status code 400')
   })
 })

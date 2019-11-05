@@ -22,7 +22,7 @@ class PaymentForm extends Component {
     if (this.state.renderPaymentForm) {
       displayPayment = (
         <Container>
-          <StripeProvider apiKey="pk_test_Z5FeQqat78fR3y3S41JrTSTh00LLyGEvNZ">
+          <StripeProvider apiKey={process.env.REACT_APP_STRIPE_API_KEY}>
             <div>
               <Elements>
                 <CheckoutForm />
