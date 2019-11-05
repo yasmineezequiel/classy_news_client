@@ -7,6 +7,7 @@ import {
         injectStripe 
       } from 'react-stripe-elements'
 import { Form, Container, Button, Card } from 'semantic-ui-react'
+import getCurrentCredentials from '../Modules/GetCredentials'
 
 class CheckoutForm extends Component {
   state = {
@@ -29,7 +30,9 @@ class CheckoutForm extends Component {
     debugger
     try {
       let response = await axios.post('http://localhost:3000/api/v1/subscriptions', {
-        stripeToken
+        stripeToken 
+      }, {
+        headers: getCurrentCredentials()
       })
       if (response.status === 200) {
         this.setState({ message: response.data.message })

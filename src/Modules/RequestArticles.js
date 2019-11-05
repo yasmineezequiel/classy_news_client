@@ -1,4 +1,5 @@
 import axios from 'axios'
+import getCurrentCredentials from './GetCredentials'
 
 const apiUrl = 'http://localhost:3000/api/v1/'
 
@@ -23,6 +24,9 @@ const submitArticle = async (title, content, author, image) => {
         content: content,
         author: author,
         image: image[0]
+      }, 
+      {
+        headers: getCurrentCredentials()
       }
     )
     return response

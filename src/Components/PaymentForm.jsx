@@ -4,6 +4,7 @@ import CheckoutForm from '../Components/CheckoutForm'
 import { Container, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 
+
 class PaymentForm extends Component {
   state = {
     renderPaymentForm: false
