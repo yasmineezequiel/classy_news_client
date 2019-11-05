@@ -49,15 +49,10 @@ class Signup extends Component {
   
   render() {
     let signupForm
-    let welcomeMessage
     let errorMessage
 
     if (this.props.currentUser.isSignedIn) {
-          welcomeMessage = (
-            <div>
-              <PaymentForm />
-            </div>
-        )
+          signupForm = ( <PaymentForm /> )
     } else {
       if (this.state.renderSignupForm) {
         signupForm = (
@@ -87,7 +82,6 @@ class Signup extends Component {
           <Grid.Column>
             <div>
               { signupForm }
-              { welcomeMessage }
             </div>
             <p id="error-message">{ errorMessage }</p>
           </Grid.Column>

@@ -43,7 +43,7 @@ class PaymentForm extends Component {
         {displayPayment}
       </>
     )
-}
+  }
 }
 
 const mapStateToProps = state => {
