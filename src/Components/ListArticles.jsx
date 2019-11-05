@@ -27,13 +27,14 @@ class ListArticles extends Component {
   }
 
   async getArticles() {
+  debugger
     let result = await getData()
 
     if (result.status === 400) {
       this.setErrorMessage(result.error_message)
     } else {
       this.setState({
-        articles: result.data
+        articles: result.data.articles
       })
     }
   }
@@ -58,10 +59,10 @@ class ListArticles extends Component {
 
     if (articleData.length !== 0) {
       debugger
-        if (!renderArticle) {
+        if (renderArticle === false) {
           renderListArticles = (
             <>
-              {articleData.articles.map(article => {
+              {articleData.map(article => {
                 return <div id={`article_${article.id}`} onClick={() => this.renderArticleHandler(article.id)} key={article.id}>
                   <Item.Group> 
                     <Item>
