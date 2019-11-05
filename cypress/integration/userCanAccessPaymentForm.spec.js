@@ -46,9 +46,7 @@ describe('Subscribe button is only visible for signed in user', () => {
   })
 
   it('is not visible for visitor', () => {
-    cy.get('h1').should('contain', 'Classy News')
-    cy.not().contains('#submit-signup-form')
-      .contains('#signup-button')
-      .contains('#subscribe-button')
+    cy.get('#signup-button').should('contain', 'Sign Up')
+    cy.get('#payment-form').should('not.exist')
   })
 })
