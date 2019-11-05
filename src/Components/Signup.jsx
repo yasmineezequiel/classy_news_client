@@ -55,7 +55,6 @@ class Signup extends Component {
     if (this.props.currentUser.isSignedIn) {
           welcomeMessage = (
             <div>
-              <p id="welcome-message">Hello {this.props.currentUser.attributes.name}</p>
               <PaymentForm />
             </div>
         )
