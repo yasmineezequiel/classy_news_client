@@ -8,12 +8,12 @@ import CreateArticle from './Components/CreateArticle'
 class App extends Component {
   render() {
     return (
-      <div>
+      <>
         <ListArticles />
-        <CreateArticle />
-        <Signup />
         <Login />
-      </div>
+        <Signup />
+        <CreateArticle />
+      </>
     )
   }
 }
