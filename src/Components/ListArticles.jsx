@@ -50,7 +50,7 @@ class ListArticles extends Component {
             return <div key={art.id}>
               <Item.Group> 
                 <Item>
-                  <Item.Image size='tiny' src='https://react.semantic-ui.com/images/wireframe/image.png' />
+                  <Item.Image size='tiny' src={art.image} />
                   <Item.Content>
                     <Item.Description>{art.publish_date}</Item.Description>
                     <Item.Header as='h2'>{art.title}</Item.Header>
