@@ -47,8 +47,7 @@
     }
 
     render() {
-      let articleForm
-      let responseMessage
+      let articleForm, responseMessage
 
       if (this.state.responseMessage) {
       responseMessage = <p id="response-message">{this.state.responseMessage}</p>
