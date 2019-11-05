@@ -3,8 +3,14 @@ describe('User gets payment form', () => {
     cy.server()
     cy.route({
       method: 'POST',
-      url:'http://localhost:3000/api/v1/auth',
+      url:'http://localhost:3000/auth',
       response: 'fixture:successful_user_signup.json'
+    })
+    cy.route({
+      method: 'POST',
+      url: 'http://localhost:3000/api/v1/subscriptions',
+      response: 'fixture:successful_subscription_payment.json',
+      status: 200
     })
     cy.visit('http://localhost:3001')
   })
