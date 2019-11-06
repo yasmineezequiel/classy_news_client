@@ -19,7 +19,6 @@
     }
 
     submitArticleHandler = async() => {
-      debugger
       const { title, content, author, image } = this.state
       let response = await submitArticle(title, content, author, image)
 

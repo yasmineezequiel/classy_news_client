@@ -4,25 +4,27 @@ import { getArticle } from '../Modules/RequestArticles'
 
 class ViewArticle extends Component {
   state = {
-    article: null
+    article: null,
+    error_message: ''
   }
 
   async componentDidMount() {
-      debugger
     let response = await getArticle(this.props.match.params.id)
     if (response.status === 200) {
       this.setState({
         article: response.data.article
       })
     } else {
-      this.props.renderErrorMessage(response)
+      this.setState({
+        error_message: response.data.error_message
+      })
     }
   }
 
   render() {
     let singleArticle
     const article = this.state.article
-
+  
     if (article) {
       singleArticle = (
         <div id="single-article">
@@ -41,7 +43,11 @@ class ViewArticle extends Component {
           </Container>
         </div>
       )
-    }
+    } else {
+      singleArticle = (
+        <p>{this.state.error_message}</p>
+      )
+    }
     return (
       <>
         {singleArticle}

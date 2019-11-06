@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { getData } from '../Modules/RequestArticles'
 import { Container, Header, Item } from 'semantic-ui-react'
-import ViewArticle from './ViewArticle'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
@@ -34,12 +33,6 @@ class ListArticles extends Component {
       })
     }
   }
-
-   renderArticleHandler = (chosenArticle) => {
-     this.setState({
-       chosenArticleId: chosenArticle 
-    })
-  }
 
   render() {
     let renderListArticles, error_message

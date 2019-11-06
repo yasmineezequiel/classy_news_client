@@ -52,6 +52,7 @@ class CheckoutForm extends Component {
       stripeForm = (
         <Form id="payment-form">
           <Form.Field>
+            <h3>Subscribe to access our content.</h3>
             <label>Please choose your subscription plan:</label>
             <Form.Field>
               <Card>

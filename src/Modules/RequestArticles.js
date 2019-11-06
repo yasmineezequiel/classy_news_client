@@ -16,7 +16,6 @@ const getData = async () => {
 }
 
 const submitArticle = async (title, content, author, image) => {
-  debugger
   try {
     let response = await axios.post(
       apiUrl + 'articles',

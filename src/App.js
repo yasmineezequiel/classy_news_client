@@ -17,11 +17,15 @@ const App = ({ currentUser }) => {
       <>
         <NavBar />
         <Switch>
-          <Route exact path='/article/:id' component={ViewArticle} />
           <Route exact path='/signup' component={Signup} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/subscribe' component={PaymentForm} />
           <Route exact path='/' component={ListArticles} />
+          {currentUser.attributes.role === 'subscriber' ? (
+            <Route exact path='/article/:id' component={ViewArticle} />
+          ) : (
+            <Redirect to='/subscribe' /> 
+          )}
           {currentUser.attributes.role === 'journalist' ? (
             <Route exact path='/create-article' component={CreateArticle} />
           ) : (
