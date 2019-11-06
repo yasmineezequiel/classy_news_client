@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { getData } from '../Modules/RequestArticles'
 import { Container, Header, Item } from 'semantic-ui-react'
-import ViewArticle from './ViewArticle';
+import ViewArticle from './ViewArticle'
+import { NavLink } from 'react-router-dom'
 
 class ListArticles extends Component {
   state = {
@@ -55,7 +56,7 @@ class ListArticles extends Component {
           renderListArticles = (
             <>
               {articleData.map(article => {
-                return <div id={`article_${article.id}`} onClick={() => this.renderArticleHandler(article.id)} key={article.id}>
+                return <div id={`article_${article.id}`} onClick={() => this.renderArticleHandler(article.id)} key={article.id} as={NavLink} to="/view-article">
                   <Item.Group> 
                     <Item>
                       <Item.Image size='tiny' src={article.image} />
@@ -72,6 +73,7 @@ class ListArticles extends Component {
             </>
           )
         }
+  
       if (renderArticle) {
         specificArticle = (
           <ViewArticle
@@ -81,6 +83,7 @@ class ListArticles extends Component {
         )
       }
     }
+
     return(
       <>
         <Container text>
