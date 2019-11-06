@@ -3,9 +3,9 @@ import '../index.css';
 import SignupForm from './SignupForm';
 import { registerUser } from '../state/actions/reduxTokenAuthConfig';
 import { connect } from 'react-redux';
-import { Button, 
-         Container,
+import { Container,
          Grid  } from 'semantic-ui-react';
+import PaymentForm from './PaymentForm'
 
 class Signup extends Component {
   state = {
@@ -27,23 +27,22 @@ class Signup extends Component {
 
   handleSignup = () => {
     const { registerUser } = this.props;
-    const { email, name, nickname, password, password_confirmation, city, country } = this.state;
-    registerUser({ email, name, nickname, password, password_confirmation, city, country })
+    const { email, name, nickname, password, password_confirmation, city, country} = this.state;
+    const role = 'user'
+    registerUser({ email, name, nickname, password, password_confirmation, city, country, role })
       .then(
         console.log('yiihaaaa')
       )
       .catch(error => {
-        this.setState({errorMessage: error.response.data.errors}) 
+        this.setState({errorMessage: error.response.data.errors.full_messages[0]}) 
       })
   }
-
-
   
   render() {
     let signupForm, welcomeMessage, errorMessage
 
     if (this.props.currentUser.isSignedIn) {
-      welcomeMessage = <p id="welcome-message">Hello {this.props.currentUser.attributes.name}</p>
+          signupForm = ( <PaymentForm /> )
     } else {
       signupForm = (
         <div>

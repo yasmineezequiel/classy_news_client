@@ -1,4 +1,5 @@
 import axios from 'axios'
+import getCurrentCredentials from './GetCredentials'
 
 const apiUrl = 'http://localhost:3000/api/v1/'
 
@@ -24,6 +25,9 @@ const submitArticle = async (title, content, author, image) => {
         content: content,
         author: author,
         image: image[0]
+      }, 
+      {
+        headers: getCurrentCredentials()
       }
     )
     return response
@@ -34,7 +38,12 @@ const submitArticle = async (title, content, author, image) => {
 
 const getArticle = async (chosenArticle) => {
   try {
-    let response = await axios.get(apiUrl + `articles/${chosenArticle}`)
+    let response = await axios.get(
+      apiUrl + `articles/${chosenArticle}`, 
+      {
+        headers: getCurrentCredentials()
+      }
+    )
     return response 
   } catch(error) {
     return error.response.data.error_message

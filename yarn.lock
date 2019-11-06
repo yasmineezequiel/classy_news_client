@@ -3275,10 +3275,10 @@ cypress-file-upload@^3.4.0:
   resolved "https://registry.yarnpkg.com/cypress-file-upload/-/cypress-file-upload-3.4.0.tgz#f066853357994ed7b64e0ea35920d3d85273914e"
   integrity sha512-BY7jrpOPFEGcGBzkTReEjwQ59+O3u2SH2OleXdnDCuWIPHjbDx7haXukyAFd906JsI4Z2zXPiKrUVFHZc96eFA==
 
-cypress@^3.5.0:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/cypress/-/cypress-3.5.0.tgz#e188bc8f48782953f6865d8830a4dc342334b81c"
-  integrity sha512-I1iSReD2C8CTP6s4BvQky4gEqHBnKLmhBIqFyCUZdj6BQ6ZDxGnmIbQPM5g79E2iP60KTIbTK99ZPSDVtsNUUg==
+cypress@3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/cypress/-/cypress-3.6.0.tgz#b7c88c169970aeb74a00182a1e8dc43a355d9eea"
+  integrity sha512-ODhbOrH1XZx0DUoYmJSvOSbEQjycNOpFYe7jOnHkT1+sdsn2+uqwAjZ1x982q3H4R/5iZjpSd50gd/iw2bofzg==
   dependencies:
     "@cypress/listr-verbose-renderer" "0.4.1"
     "@cypress/xvfb" "1.2.4"
@@ -8650,7 +8650,7 @@ prop-types-exact@^1.2.0:
     object.assign "^4.1.0"
     reflect.ownkeys "^0.2.0"
 
-prop-types@^15.5.10, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@15.7.2, prop-types@^15.5.10, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -9044,6 +9044,13 @@ react-scripts@3.2.0:
     workbox-webpack-plugin "4.3.1"
   optionalDependencies:
     fsevents "2.0.7"
+
+react-stripe-elements@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/react-stripe-elements/-/react-stripe-elements-5.1.0.tgz#b55a09ccd6ce7a55ca61f1d1de24cdfa8f0f3b04"
+  integrity sha512-4UlzOLNdbJsZr4JwbTdJjxhedAfalDDtfEYLHEBo0MKG0KgSLRAeIJup0/6NSpKtBLK4ieOMAwvyln9ICOSilQ==
+  dependencies:
+    prop-types "15.7.2"
 
 react-test-renderer@^16.0.0-0, react-test-renderer@^16.11.0:
   version "16.11.0"

@@ -13,27 +13,35 @@ import { Menu } from 'semantic-ui-react'
       />
       
       {currentUser.isSignedIn === false && (
-      <Menu.Item 
-        as={NavLink}
-        to="/login"
-        name= "Login"
-      />
+        <Menu.Item 
+          as={NavLink}
+          to="/login"
+          name= "Login"
+        />
       )}
 
       {currentUser.isSignedIn === false && (
-      <Menu.Item
-        s={NavLink}
-        to="/signup"
-        name= "Sign Up"
-      />
+        <Menu.Item
+          as={NavLink}
+          to="/signup"
+          name= "Sign Up"
+        />
       )}
 
       {currentUser.attributes.role === 'journalist' && (
         <Menu.Item
-        s={NavLink}
-        to="/create-article"
-        name= "Create Article"
-      />
+          as={NavLink}
+          to="/create-article"
+          name= "Create Article"
+        />
+      )}
+
+      {currentUser.attributes.role !== 'journalist' && (
+        <Menu.Item
+          as={NavLink}
+          to="/subscribe"
+          name= "Subscribe"
+        />
       )}        
     </Menu>
   )

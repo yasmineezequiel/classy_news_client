@@ -33,7 +33,6 @@ class ListArticles extends Component {
       })
     }
   }
-}
 
    renderArticleHandler = (chosenArticle) => {
      this.setState({
@@ -73,7 +72,6 @@ class ListArticles extends Component {
             </>
           )
         }
-      }
       if (renderArticle) {
         specificArticle = (
           <ViewArticle
@@ -82,7 +80,7 @@ class ListArticles extends Component {
           />
         )
       }
-
+    }
     return(
       <>
         <Container text>

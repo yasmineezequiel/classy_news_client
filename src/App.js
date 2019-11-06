@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Redirect } from 'react-router-dom'
 import NavBar from './Components/NavBar'
 import { connect } from 'react-redux';
+import PaymentForm from './Components/PaymentForm'
 
 const App = ({ currentUser }) => {
   return (
@@ -17,6 +18,7 @@ const App = ({ currentUser }) => {
         <Switch>
           <Route path='/signup' component={Signup} />
           <Route path='/login' component={Login} />
+          <Route path='/subscribe' component={PaymentForm} />
           <Route exact path='/' component={ListArticles} />
           {currentUser.attributes.role === 'journalist' ? (
             <Route exact path='/create-article' component={CreateArticle} />
