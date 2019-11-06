@@ -3,6 +3,7 @@ import { getData } from '../Modules/RequestArticles'
 import { Container, Header, Item } from 'semantic-ui-react'
 import ViewArticle from './ViewArticle'
 import { connect } from 'react-redux'
+import { NavLink, Redirect } from 'react-router-dom'
 
 class ListArticles extends Component {
   state = {
@@ -73,19 +74,22 @@ class ListArticles extends Component {
             </>
           )
         }
-    if (this.props.currentUser.attributes.role === 'subscriber') {
+
       if (renderArticle) {
-        specificArticle = (
-          <ViewArticle
-            chosenArticle = {this.state.chosenArticleId}
-            renderErrorMessage = {this.setErrorMessage}
-          />
-        )
+        {this.props.currentUser.attributes.role === 'subscriber' ? (
+          specificArticle = (
+            <ViewArticle
+              chosenArticle = {this.state.chosenArticleId}
+              renderErrorMessage = {this.setErrorMessage}
+            />
+          )
+        ) : (
+          specificArticle = (
+          <Redirect to='/' />
+          )
+        )}
       }
-    } else {
-      <Redirect to='/' />
     }
-  }
     return(
       <>
         <Container text>
