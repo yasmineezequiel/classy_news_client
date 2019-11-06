@@ -28,7 +28,7 @@ class ViewArticle extends Component {
           <Container>
             <Item.Group> 
               <Item>
-                <Item.Image size='tiny' src='https://react.semantic-ui.com/images/wireframe/image.png' /> 
+                <Item.Image size='tiny' src={article.image} /> 
                 <Item.Content>
                   <Item.Description id="article-date">{article.publish_date}</Item.Description>
                   <Item.Header as='h2' id="article-title">{article.title}</Item.Header>
