@@ -18,7 +18,6 @@ class Signup extends Component {
     name: '',
     city: '',
     country: 'Sweden',
-    role: '',
     errorMessage: ''
   }
 
@@ -36,7 +35,8 @@ class Signup extends Component {
 
   handleSignup = () => {
     const { registerUser } = this.props;
-    const { email, name, nickname, password, password_confirmation, city, country, role } = this.state;
+    const { email, name, nickname, password, password_confirmation, city, country} = this.state;
+    const role = 'user'
     registerUser({ email, name, nickname, password, password_confirmation, city, country, role })
       .then(
         console.log('yiihaaaa')
