@@ -1,7 +1,8 @@
 import React from 'react'
 import { Form,
          Button 
-} from "semantic-ui-react";
+} from "semantic-ui-react"
+import { NavLink } from 'react-router-dom'
 
 const LoginForm = (props) => {
   return (
@@ -13,8 +14,9 @@ const LoginForm = (props) => {
           <Form.Field>
             <input onChange={props.inputChangeHandler} placeholder='Password' name='password' id="password-input" />
           </Form.Field>
-          <Button onClick={props.handleLogin} id="submit-login-form" type='submit'>Submit</Button>
-          <Button onClick={props.renderLogin} id="cancel-login-form">Cancel</Button>
+          <NavLink to="/login">
+            <Button onClick={props.handleLogin} id="submit-login-form" type='submit'>Submit</Button>
+          </NavLink>       
         </Form>
     </div>
   )

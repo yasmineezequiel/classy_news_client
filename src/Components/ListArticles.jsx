@@ -15,29 +15,25 @@ class ListArticles extends Component {
     this.getArticles()
   }
 
-  setErrorMessage = (error) => {
-    this.setState({
-      error_message: error
-    })
-  }
-
   makeIngress = (content, wordcount) => {
     let ingress = content.split(' ').slice(0, wordcount).join(' ')
     return ingress + ' ...'
   }
 
-  async getArticles() {
-  debugger
-    let result = await getData()
+  async getArticles() {
+    let result = await getData()
 
-    if (result.status === 400) {
-      this.setErrorMessage(result.error_message)
-    } else {
-      this.setState({
-        articles: result.data.articles
-      })
-    }
-  }
+    if (result.error_message) {
+      this.setState({
+        error_message: result.error_message
+      })
+    } else {
+      this.setState({
+        articles: result
+      })
+    }
+  }
+}
 
    renderArticleHandler = (chosenArticle) => {
      this.setState({

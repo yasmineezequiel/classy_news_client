@@ -9,14 +9,7 @@
       content: '',
       author: '',
       image: '',
-      publish_date: '',
-      renderArticleForm: false
-    }
-
-    renderForm = () => {
-      this.setState({
-        renderArticleForm: !this.state.renderArticleForm
-      })
+      publish_date: ''
     }
 
     inputHandler = (e) => {
@@ -26,6 +19,7 @@
     }
 
     submitArticleHandler = async() => {
+      debugger
       const { title, content, author, image } = this.state
       let response = await submitArticle(title, content, author, image)
 
@@ -52,8 +46,6 @@
       if (this.state.responseMessage) {
       responseMessage = <p id="response-message">{this.state.responseMessage}</p>
       }
-
-      if (this.state.renderArticleForm) {
         articleForm = (
           <>
             <Container>
@@ -82,17 +74,11 @@
                 </Form.Field>
                 <Form.Field>
                   <Button id="submit-article" onClick={this.submitArticleHandler.bind(this)}>Submit Article</Button>
-                  <Button id="cancel-article" onClick={this.renderForm}>Cancel</Button>
                 </Form.Field>
               </Form>
             </Container>
           </>
         )
-      } else {
-        articleForm = (
-          <Button onClick={this.renderForm} id="create-article">write Article</Button>
-        )
-      }
       return(
         <>
           {articleForm}
@@ -100,6 +86,6 @@
         </>
       )
     }
- }
+  }
 
  export default CreateArticle
