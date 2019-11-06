@@ -8,7 +8,8 @@ class ViewArticle extends Component {
   }
 
   async componentDidMount() {
-    let response = await getArticle(this.props.chosenArticle)
+      debugger
+    let response = await getArticle(this.props.match.params.id)
     if (response.status === 200) {
       this.setState({
         article: response.data.article
