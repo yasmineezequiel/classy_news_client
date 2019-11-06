@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { getData } from '../Modules/RequestArticles'
 import { Container, Header, Item } from 'semantic-ui-react'
-import ViewArticle from './ViewArticle';
+import ViewArticle from './ViewArticle'
+import { connect } from 'react-redux'
 
 class ListArticles extends Component {
   state = {
@@ -72,6 +73,7 @@ class ListArticles extends Component {
             </>
           )
         }
+    if (this.props.currentUser.attributes.role === 'subscriber') {
       if (renderArticle) {
         specificArticle = (
           <ViewArticle
@@ -81,6 +83,7 @@ class ListArticles extends Component {
         )
       }
     }
+  }
     return(
       <>
         <Container text>
@@ -96,4 +99,13 @@ class ListArticles extends Component {
   }
 }
 
-export default ListArticles
+const mapStateToProps = state => {
+  return {
+    currentUser: state.reduxTokenAuth.currentUser
+  }
+}
+
+export default connect(
+  mapStateToProps, 
+  null
+  )(ListArticles)
