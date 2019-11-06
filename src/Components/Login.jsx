@@ -35,7 +35,7 @@ class Login extends Component {
         console.log('yiihaaaa')
       )
       .catch(error => {
-        this.setState({errorMessage: error.response.data.errors}) 
+        this.setState({errorMessage: error.response.data.errors.full_messages[0]}) 
       })
   }
 
@@ -43,7 +43,7 @@ class Login extends Component {
     let loginForm, welcomeMessage, errorMessage
 
     if (this.props.currentUser.isSignedIn) {
-      welcomeMessage = <p id="welcome-message">Hello {this.props.currentUser.attributes.name}</p>
+      welcomeMessage = <p id="welcome-message">Hello {this.props.currentUser.attributes.name}</p> 
     } else {
       if (this.state.renderLoginForm) {
         loginForm = (
