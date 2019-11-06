@@ -9,6 +9,7 @@ import { Redirect } from 'react-router-dom'
 import NavBar from './Components/NavBar'
 import { connect } from 'react-redux';
 import PaymentForm from './Components/PaymentForm'
+import ViewArticle from './Components/ViewArticle'
 
 const App = ({ currentUser }) => {
   return (
@@ -22,6 +23,11 @@ const App = ({ currentUser }) => {
           <Route exact path='/' component={ListArticles} />
           {currentUser.attributes.role === 'journalist' ? (
             <Route exact path='/create-article' component={CreateArticle} />
+          ) : (
+            <Redirect to='/' />
+          )}
+          {currentUser.attributes.role === 'subscriber' ? (
+            <Route exact path='/view-article' component={ViewArticle} />
           ) : (
             <Redirect to='/' />
           )}
