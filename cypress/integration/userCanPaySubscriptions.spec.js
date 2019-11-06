@@ -7,9 +7,6 @@ describe('User can pay for subscription', () => {
       response: 'fixture:successful_user_login.json'
     })
     cy.visit('http://localhost:3001')
-  })
-
-  it('Successfully submits payment', () => {
     cy.get('#signup-button').click()
     cy.get('#signup-form').within(()=> {
       cy.get('#nickname-input').type('nickname')
@@ -21,6 +18,9 @@ describe('User can pay for subscription', () => {
       cy.get('#password-confirmation').type('password')
     })
     cy.get('#submit-signup-form').click()
+  })
+
+  it('Successfully submits payment', () => {
     cy.get('#paymentform-button').click()
     cy.route({
       method: 'POST',
@@ -58,17 +58,6 @@ describe('User can pay for subscription', () => {
   })
 
   it('Unsuccessfully submits payment', () => {
-    cy.get('#signup-button').click()
-    cy.get('#signup-form').within(()=> {
-      cy.get('#nickname-input').type('nickname')
-      cy.get('#name-input').type('name')
-      cy.get('#city-input').type('city')
-      cy.get('#country-input').select('Sweden')
-      cy.get('#email-input').type('user@mail.com')
-      cy.get('#password-input').type('password')
-      cy.get('#password-confirmation').type('password')
-    })
-    cy.get('#submit-signup-form').click()
     cy.get('#paymentform-button').click()
     cy.route({
       method: 'POST',
@@ -103,5 +92,16 @@ describe('User can pay for subscription', () => {
     cy.get('#subscribe-button').click()
     cy.wait(200);
     cy.contains('Something went wrong, please try again.')
+  })
+
+  it('is not visible for visitor', () => {
+    cy.server()
+    cy.route({
+      method: 'GET',
+      url:'http://localhost:3000/api/v1/articles',
+      response: 'fixture:articles.json'
+    })
+    cy.visit('http://localhost:3001')
+    cy.get('#payment-form').should('not.exist')
   })
 })

@@ -4,7 +4,6 @@ import getCurrentCredentials from './GetCredentials'
 const apiUrl = 'http://localhost:3000/api/v1/'
 
 const getData = async () => {
-  debugger
   try {
     let response = await axios.get(apiUrl + 'articles')
     return response.data.articles
