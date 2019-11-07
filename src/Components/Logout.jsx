@@ -32,7 +32,7 @@ class Logout extends Component {
     if (this.props.currentUser.isSignedIn) {
         logoutButton = (
           <div>
-            <Button onClick={signOut}>Logout</Button>
+            <Button id='logout-button' onClick={signOut}>Logout</Button>
           </div>
         )
       }
