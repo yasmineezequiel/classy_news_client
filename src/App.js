@@ -11,7 +11,11 @@ import { connect } from 'react-redux';
 import PaymentForm from './Components/PaymentForm'
 import ViewArticle from './Components/ViewArticle'
 import { createBrowserHistory } from 'history'
+import { generateRequireSignInWrapper } from 'redux-token-auth'
 
+const requireSignIn = generateRequireSignInWrapper({
+  redirectPathIfNotSignedIn: '/login'
+})
 const history = createBrowserHistory({})
 
 const App = ({ currentUser }) => {
@@ -20,9 +24,13 @@ const App = ({ currentUser }) => {
       <>
         <NavBar />
         <Switch>
-          <Route exact path='/signup' component={Signup} />
-          <Route exact path='/login' component={Login} />
-          <Route exact path='/subscribe' component={PaymentForm} />
+          <Route exact path='/signup' component={Signup}>
+            {currentUser.isSignedIn ? <Redirect to='/' /> : <Signup />}
+          </Route>
+          <Route exact path='/login' component={Login}>
+          {currentUser.isSignedIn ? <Redirect to='/' /> : <Login />}
+          </Route>
+          <Route exact path='/subscribe' component={requireSignIn(PaymentForm)} />
           <Route exact path='/' component={ListArticles} />
           {currentUser.isSignedIn ? (
             <Route exact path='/' component={ListArticles} />

@@ -67,7 +67,7 @@ class ListArticles extends Component {
       <>
         <Container text>
           <Item.Group>
-            <Header as='h1' id="header-title">Classy News</Header>
+            <Header as='h1' id="header-title">BREAKING NEWS</Header>
             {renderListArticles}
             {error_message}
           </Item.Group>

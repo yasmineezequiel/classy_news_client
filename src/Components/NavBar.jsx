@@ -5,28 +5,13 @@ import { Menu } from 'semantic-ui-react'
 
  const NavBar = ({ currentUser }) => {
   return (
-    <Menu>
+    <Menu className="navbar">
       <Menu.Item 
         as={NavLink}
         to="/"
-        name= "Home"
+        name= "Classy News"
+        id="navbar-title"
       />
-      
-      {currentUser.isSignedIn === false && (
-        <Menu.Item 
-          as={NavLink}
-          to="/login"
-          name= "Login"
-        />
-      )}
-
-      {currentUser.isSignedIn === false && (
-        <Menu.Item
-          as={NavLink}
-          to="/signup"
-          name= "Sign Up"
-        />
-      )}
 
       {currentUser.attributes.role === 'journalist' && (
         <Menu.Item
@@ -36,13 +21,32 @@ import { Menu } from 'semantic-ui-react'
         />
       )}
 
-      {currentUser.attributes.role !== 'journalist' && (
-        <Menu.Item
-          as={NavLink}
-          to="/subscribe"
-          name= "Subscribe"
-        />
-      )}        
+      <Menu.Menu position="right">
+        {currentUser.attributes.role !== 'journalist' && (
+          <Menu.Item
+            as={NavLink}
+            to="/subscribe"
+            name= "Subscribe"
+          />
+        )}  
+
+        {currentUser.isSignedIn === false && (
+          <Menu.Item
+            as={NavLink}
+            to="/signup"
+            name= "Sign Up"
+          />
+        )}
+
+        {currentUser.isSignedIn === false && (
+          <Menu.Item 
+            as={NavLink}
+            to="/login"
+            name= "Login"
+            id=""
+          />
+        )}
+      </Menu.Menu>      
     </Menu>
   )
 }
