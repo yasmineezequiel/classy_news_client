@@ -12,7 +12,6 @@ class Logout extends Component {
   }
 
   signOut = (e) => {
-    debugger
     e.preventDefault()
     const { signOutUser } = this.props
 
@@ -21,7 +20,6 @@ class Logout extends Component {
         console.log('yiihaaaa')
       )
       .catch(error => {
-        debugger
         this.setState({errorMessage: error.response.data.errors.full_messages[0]}) 
       })
   }
