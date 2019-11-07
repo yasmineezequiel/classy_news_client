@@ -2,7 +2,7 @@ import React from 'react'
 import { Elements, StripeProvider } from 'react-stripe-elements'
 import CheckoutForm from '../Components/CheckoutForm'
 import { Container } from 'semantic-ui-react'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
 const PaymentForm = () => {
   return (

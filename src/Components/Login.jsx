@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import '../index.css';
 import LoginForm from './LoginForm';
-import { signInUser } from '../state/actions/reduxTokenAuthConfig';
+import { signInUser } from '../state/actions/reduxTokenAuthConfig'
 import { connect } from 'react-redux';
 import { Container,
          Grid  } from 'semantic-ui-react';

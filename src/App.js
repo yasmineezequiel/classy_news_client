@@ -10,10 +10,13 @@ import NavBar from './Components/NavBar'
 import { connect } from 'react-redux';
 import PaymentForm from './Components/PaymentForm'
 import ViewArticle from './Components/ViewArticle'
+import { createBrowserHistory } from 'history'
+
+const history = createBrowserHistory({})
 
 const App = ({ currentUser }) => {
   return (
-    <Router>
+    <Router history ={history}>
       <>
         <NavBar />
         <Switch>
