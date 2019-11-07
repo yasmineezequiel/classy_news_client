@@ -65,3 +65,7 @@ body {
 .select-css option {
   font-weight:normal;
 }
+#article-title.header {
+  align-content: center!important;
+  margin-right: 30px!important;
+}

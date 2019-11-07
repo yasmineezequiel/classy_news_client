@@ -49,12 +49,12 @@ class ListArticles extends Component {
             return <NavLink id={`article_${article.id}`} key={article.id} to={`/article/${article.id}`}>
               <Item.Group> 
                 <Item>
-                  <Item.Image size='tiny' src={article.image} />
+                  <Item.Image id='article-image' size='tiny' src={article.image} />
                   <Item.Content>
-                    <Item.Description>{article.publish_date}</Item.Description>
-                    <Item.Header as="h1">{article.title}</Item.Header>
-                    <Item.Meta name="article-content">{this.makeIngress(article.content, 15)}</Item.Meta>
-                    <Item.Extra>{article.author}</Item.Extra>
+                    <Item.Description id='article-publish'>{article.publish_date}</Item.Description>
+                    <Item.Header as="h1" id='article-title'>{article.title}</Item.Header>
+                    <Item.Meta id='article-content' name="article-content">{this.makeIngress(article.content, 15)}</Item.Meta>
+                    <Item.Extra id='article-author'>{article.author}</Item.Extra>
                   </Item.Content>
                 </Item>
               </Item.Group> 

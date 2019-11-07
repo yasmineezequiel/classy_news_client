@@ -21,7 +21,12 @@ const App = ({ currentUser }) => {
           <Route exact path='/login' component={Login} />
           <Route exact path='/subscribe' component={PaymentForm} />
           <Route exact path='/' component={ListArticles} />
-          {currentUser.attributes.role === 'subscriber' ? (
+          {currentUser.isSignedIn ? (
+            <Route exact path='/' component={ListArticles} />
+          ) : (
+            <Redirect to='/login' />
+          )} 
+          {currentUser.attributes.role === 'subscriber' || 'journalist' ? (
             <Route exact path='/article/:id' component={ViewArticle} />
           ) : (
             <Redirect to='/subscribe' /> 
