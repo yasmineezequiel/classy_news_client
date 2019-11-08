@@ -12,6 +12,9 @@ import PaymentForm from './Components/PaymentForm'
 import ViewArticle from './Components/ViewArticle'
 import { createBrowserHistory } from 'history'
 import { generateRequireSignInWrapper } from 'redux-token-auth'
+import { Header, Image } from 'semantic-ui-react'
+import myImage from './RB.png'
+
 
 const requireSignIn = generateRequireSignInWrapper({
   redirectPathIfNotSignedIn: '/login'
@@ -20,38 +23,47 @@ const history = createBrowserHistory({})
 
 const App = ({ currentUser }) => {
   return (
-    <Router history ={history}>
-      <>
-        <NavBar />
-        <Switch>
-          <Route exact path='/signup' component={Signup}>
-            {currentUser.isSignedIn ? <Redirect to='/' /> : <Signup />}
-          </Route>
-          <Route exact path='/login' component={Login}>
-          {currentUser.isSignedIn ? <Redirect to='/' /> : <Login />}
-          </Route>
-          <Route exact path='/subscribe' component={requireSignIn(PaymentForm)} />
-          <Route exact path='/' component={ListArticles} />
-          {currentUser.isSignedIn ? (
+    <>
+      <center><Header as='h1' id="header-title">
+        Classy
+        <Image src={myImage} size='large'
+        />
+        News
+      </Header></center>
+            
+      <Router history ={history}>
+        <>
+          <NavBar />
+          <Switch>
+            <Route exact path='/signup' component={Signup}>
+              {currentUser.isSignedIn ? <Redirect to='/' /> : <Signup />}
+            </Route>
+            <Route exact path='/login' component={Login}>
+            {currentUser.isSignedIn ? <Redirect to='/' /> : <Login />}
+            </Route>
+            <Route exact path='/subscribe' component={requireSignIn(PaymentForm)} />
             <Route exact path='/' component={ListArticles} />
-          ) : (
-            <Redirect to='/login' />
-          )} 
-          {currentUser.attributes.role === 'subscriber' || 'journalist' ? (
-            <Route exact path='/article/:id' component={ViewArticle} />
-          ) : (
-            <Redirect to='/subscribe' /> 
-          )}
-          {currentUser.attributes.role === 'journalist' ? (
-            <Route exact path='/create-article' component={CreateArticle} />
-          ) : (
-            <Redirect to='/' />
-          )}
-        </Switch>
+            {currentUser.isSignedIn ? (
+              <Route exact path='/' component={ListArticles} />
+            ) : (
+              <Redirect to='/login' />
+            )} 
+            {currentUser.attributes.role === 'subscriber' || 'journalist' ? (
+              <Route exact path='/article/:id' component={ViewArticle} />
+            ) : (
+              <Redirect to='/subscribe' /> 
+            )}
+            {currentUser.attributes.role === 'journalist' ? (
+              <Route exact path='/create-article' component={CreateArticle} />
+            ) : (
+              <Redirect to='/' />
+            )}
+          </Switch>
+        </>
+      </Router>
       </>
-    </Router>
-  )
-}
+    )
+  }
 
 const mapStateToProps = state => {
   return {

@@ -2,16 +2,19 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Menu } from 'semantic-ui-react'
+import myImage from '../logo.png'
 
  const NavBar = ({ currentUser }) => {
   return (
     <Menu className="navbar">
-      <Menu.Item 
-        as={NavLink}
-        to="/"
-        name= "Classy News"
-        id="navbar-title"
-      />
+      <Menu.Item>
+        <>
+        <div to="/" />
+        <div name= "Classy News" />
+        <div id="navbar-title" />
+        <a href={NavLink}><img src={myImage} width='60px' height='30px' display='block' /></a>
+        </>
+        </Menu.Item>
 
       {currentUser.attributes.role === 'journalist' && (
         <Menu.Item

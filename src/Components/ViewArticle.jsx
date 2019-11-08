@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Item } from 'semantic-ui-react'
+import { Container, Item, Grid, Segment, Divider, Header, Image } from 'semantic-ui-react'
 import { getArticle } from '../Modules/RequestArticles'
 
 class ViewArticle extends Component {
@@ -27,21 +27,26 @@ class ViewArticle extends Component {
   
     if (article) {
       singleArticle = (
+      <>
         <div id="single-article">
-          <Container>
-            <Item.Group> 
-              <Item>
-                <Item.Image size='tiny' src={article.image} /> 
-                <Item.Content>
-                  <Item.Description id="article-date">{article.publish_date}</Item.Description>
-                  <Item.Header as='h2' id="article-title">{article.title}</Item.Header>
-                  <Item.Meta id="article-content">{article.content}</Item.Meta>
-                  <Item.Extra id="article-author">{article.author}</Item.Extra>
-                </Item.Content>
-              </Item>
-            </Item.Group> 
-          </Container>
+          <Container>
+            <Grid centered columns={2}>
+              <Grid.Column width={12}>
+                <Segment padded>
+                  <Header as='h2' id="article-title">{article.title}</Header>
+                  <Divider />
+                  <Image size='large' src={article.image} />
+                  <h4 id="article-date">{article.publish_date}</h4>
+                  <p id="article-content">{article.content}</p> 
+                  <Divider />
+                  <h3 id="article-author">Written by  {article.author}</h3>
+                </Segment>
+              </Grid.Column>
+            </Grid>
+          </Container>
+
         </div>
+</>
       )
     } else {
       singleArticle = (
