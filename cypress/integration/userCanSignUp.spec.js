@@ -27,7 +27,7 @@ describe('User can sign up', () => {
       cy.get('#password-confirmation').type('password')
     })
     cy.get('#submit-signup-form').click()
-    cy.get('#welcome-message').should('contain', 'Hello name')
+    cy.get('#welcome-message').should('contain', 'Hello ')
   })
 
   it('unsuccessfully', () => {

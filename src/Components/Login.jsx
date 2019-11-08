@@ -20,7 +20,6 @@ class Login extends Component {
   }
 
   handleLogin = () => {
-    debugger
     const { signInUser } = this.props;
     const { email, password } = this.state;
     signInUser({ email, password })
@@ -28,8 +27,7 @@ class Login extends Component {
         console.log('yiihaaaa')
       )
       .catch(error => {
-        debugger
-        this.setState({errorMessage: error.response.data.errors || error.response.data.errors.full_messages[0]}) 
+        this.setState({errorMessage: error.response.data.errors.full_messages[0] || error.response.data.errors }) 
       })
   }
 
@@ -60,7 +58,7 @@ class Login extends Component {
               { loginForm }
               { welcomeMessage }
             </div>
-            <p id="error-message">{ errorMessage }</p>
+            { errorMessage }
           </Grid.Column>
         </Grid>   
       </Container>  

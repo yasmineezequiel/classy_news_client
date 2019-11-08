@@ -36,9 +36,7 @@ const App = ({ currentUser }) => {
           <NavBar />
           <Switch>
             <Route exact path='/signup' component={Signup} />
-            <Route exact path='/login' component={Login}>
-            {currentUser.isSignedIn ? <Redirect to='/' /> : <Login />}
-            </Route>
+            <Route exact path='/login' component={Login} />
             <Route exact path='/subscribe' component={requireSignIn(PaymentForm)} />
             <Route exact path='/' component={ListArticles} />
             {currentUser.isSignedIn ? (
