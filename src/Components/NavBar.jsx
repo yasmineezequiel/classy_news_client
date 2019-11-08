@@ -9,10 +9,9 @@ import myImage from '../logo.png'
     <Menu className="navbar">
       <Menu.Item>
         <>
-        <div to="/" />
         <div name= "Classy News" />
         <div id="navbar-title" />
-        <a href={NavLink}><img src={myImage} width='60px' height='30px' display='block' /></a>
+        <a href="/" src={NavLink} ><img src={myImage} width='60px' height='30px' display='block' /></a>
         </>
         </Menu.Item>
 

@@ -16,7 +16,7 @@ class ViewArticle extends Component {
       })
     } else {
       this.setState({
-        error_message: response.data.error_message
+        error_message: response || response.data.error_message
       })
     }
   }
@@ -44,7 +44,6 @@ class ViewArticle extends Component {
               </Grid.Column>
             </Grid>
           </Container>
-
         </div>
 </>
       )
