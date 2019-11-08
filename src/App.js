@@ -4,7 +4,7 @@ import Signup from './Components/Signup'
 import Login from './Components/Login'
 import './index.css';
 import CreateArticle from './Components/CreateArticle'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom' 
+import { Router, Route, Switch } from 'react-router-dom' 
 import { Redirect } from 'react-router-dom'
 import NavBar from './Components/NavBar'
 import { connect } from 'react-redux';

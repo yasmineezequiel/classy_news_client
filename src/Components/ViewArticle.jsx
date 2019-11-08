@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Item, Grid, Segment, Divider, Header, Image } from 'semantic-ui-react'
+import { Container, Grid, Segment, Divider, Header, Image } from 'semantic-ui-react'
 import { getArticle } from '../Modules/RequestArticles'
 
 class ViewArticle extends Component {
@@ -33,13 +33,13 @@ class ViewArticle extends Component {
             <Grid centered columns={2}>
               <Grid.Column width={12}>
                 <Segment padded>
-                  <Header as='h2' id="article-title">{article.title}</Header>
+                  <Header as='h2' id={`title_${article.id}`}>{article.title}</Header>
                   <Divider />
-                  <Image size='large' src={article.image} />
-                  <h4 id="article-date">{article.publish_date}</h4>
-                  <p id="article-content">{article.content}</p> 
+                  <Image size='large' id={`image_${article.id}`} src={article.image} />
+                  <h4 id={`publish_date_${article.id}`}>{article.publish_date}</h4>
+                  <p id={`content_${article.id}`}>{article.content}</p> 
                   <Divider />
-                  <h3 id="article-author">Written by  {article.author}</h3>
+                  <h3 id={`author_${article.id}`}>Written by  {article.author}</h3>
                 </Segment>
               </Grid.Column>
             </Grid>

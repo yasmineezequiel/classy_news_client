@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { getData } from '../Modules/RequestArticles'
-import { Container, Header, Item, Grid, Card, Message, Image, Divider, Segment, Label, Icon, Link } from 'semantic-ui-react'
+import { Container, Header, Item, Grid, Segment } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import myImage from '../RB.png'
 
 class ListArticles extends Component {
   state = {
@@ -32,7 +31,6 @@ class ListArticles extends Component {
 
   render() {
     let renderListArticles, error_message
-    let article 
     const articleData = this.state.articles
 
     if (this.state.error_message) {
@@ -43,15 +41,18 @@ class ListArticles extends Component {
       renderListArticles = (
         <>
           {articleData.map(article => {
+            let trim_ingress = article.content.substr(0, 75)
+            let ingress = trim_ingress.substr(0, Math.min(trim_ingress.length, trim_ingress.lastIndexOf(" "))) + ' ...'
+
             return <NavLink id={`article_${article.id}`} key={article.id} to={`/article/${article.id}`}>
               <Item.Group> 
                 <Item>
-                  <Item.Image id='article-image' src={article.image} />
+                  <Item.Image id={`image_${article.id}`} src={article.image} />
                   <Item.Content>
-                    <Item.Description id='article-publish'>{article.publish_date}</Item.Description>
-                    <Item.Header as="h1" id='article-title'>{article.title}</Item.Header>
-                    <Item.Meta id='article-content' name="article-content">{article.content.split(' ').slice(0, 15).join(' ') + '...' }</Item.Meta>
-                    <Item.Extra id='article-author'>{article.author}</Item.Extra>
+                    <Item.Description id={`publish_date_${article.id}`}>{article.publish_date}</Item.Description>
+                    <Item.Header as="h1" id={`title_${article.id}`}>{article.title}</Item.Header>
+                    <Item.Meta id={`content_${article.id}`} name="article-content">{ingress}</Item.Meta>
+                    <Item.Extra id={`author_${article.id}`}>{article.author}</Item.Extra>
                   </Item.Content>
                 </Item>
               </Item.Group> 
@@ -70,7 +71,7 @@ class ListArticles extends Component {
               <Header as='h1' id="header-title">
                 Breaking News
               </Header>
-              
+
               <Container id="latest_news">
                 {renderListArticles}
               </Container>
@@ -92,6 +93,7 @@ class ListArticles extends Component {
               
             </Grid.Column>
         </Grid>
+        {error_message}
         </Container> 
       </>
     )

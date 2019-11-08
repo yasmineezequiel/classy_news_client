@@ -34,7 +34,12 @@ class Signup extends Component {
         console.log('yiihaaaa')
       )
       .catch(error => {
+        debugger
+        if (error.response.status === 500) {
+          this.setState({errorMessage: 'Must submit valid credentials to sign up.'})
+        } else {
         this.setState({errorMessage: error.response.data.errors.full_messages[0]}) 
+        }
       })
   }
   
