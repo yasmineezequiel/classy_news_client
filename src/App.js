@@ -35,9 +35,7 @@ const App = ({ currentUser }) => {
         <>
           <NavBar />
           <Switch>
-            <Route exact path='/signup' component={Signup}>
-              {currentUser.isSignedIn ? <Redirect to='/' /> : <Signup />}
-            </Route>
+            <Route exact path='/signup' component={Signup} />
             <Route exact path='/login' component={Login}>
             {currentUser.isSignedIn ? <Redirect to='/' /> : <Login />}
             </Route>

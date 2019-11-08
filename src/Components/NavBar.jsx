@@ -20,6 +20,7 @@ import myImage from '../logo.png'
           as={NavLink}
           to="/create-article"
           name= "Create Article"
+          id="create-article"
         />
       )}
 
@@ -29,6 +30,7 @@ import myImage from '../logo.png'
             as={NavLink}
             to="/subscribe"
             name= "Subscribe"
+            id="subscribe"
           />
         )}  
 
@@ -37,6 +39,7 @@ import myImage from '../logo.png'
             as={NavLink}
             to="/signup"
             name= "Sign Up"
+            id="signup-button"
           />
         )}
 
@@ -45,7 +48,7 @@ import myImage from '../logo.png'
             as={NavLink}
             to="/login"
             name= "Login"
-            id=""
+            id="login-button"
           />
         )}
       </Menu.Menu>      

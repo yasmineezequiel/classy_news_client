@@ -5,7 +5,6 @@ import { registerUser } from '../state/actions/reduxTokenAuthConfig';
 import { connect } from 'react-redux';
 import { Container,
          Grid  } from 'semantic-ui-react';
-import PaymentForm from './PaymentForm'
 
 class Signup extends Component {
   state = {
@@ -34,7 +33,6 @@ class Signup extends Component {
         console.log('yiihaaaa')
       )
       .catch(error => {
-        debugger
         if (error.response.status === 500) {
           this.setState({errorMessage: 'Must submit valid credentials to sign up.'})
         } else {
@@ -47,13 +45,15 @@ class Signup extends Component {
     let signupForm, welcomeMessage, errorMessage
 
     if (this.props.currentUser.isSignedIn) {
-          signupForm = ( <PaymentForm /> )
+          signupForm = (
+            welcomeMessage = <p id='welcome-message'>Hello {this.props.currentUser.attributes.name}</p>
+          )
     } else {
       signupForm = (
         <div>
           <SignupForm
             inputChangeHandler = {this.inputChangeHandler}
-            handleSignup={this.handleSignup}
+            handleSignup ={this.handleSignup}
           />
         </div>
       )
@@ -68,7 +68,6 @@ class Signup extends Component {
           <Grid.Column>
             <div>
               { signupForm }
-              { welcomeMessage }
               { errorMessage }
             </div>
           </Grid.Column>

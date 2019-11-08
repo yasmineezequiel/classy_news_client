@@ -1,5 +1,5 @@
 describe('User can create article', () => {
-  it('successfully', () => {
+  beforeEach(() => {
     cy.server()
     cy.route({
       method: 'POST',
@@ -7,7 +7,19 @@ describe('User can create article', () => {
       response: 'fixture:successfully_created_article.json',
       status: 200
     })
+    cy.route({
+      method: 'POST',
+      url: 'http://localhost:3000/auth/sign_in',
+      response: 'fixture:successful_journalist_login.json',
+      status: 200,
+      headers: {
+        "uid": "user2@mail.com"
+      }
+    })
     cy.visit('http://localhost:3001')
+    cy.user_login('user2@mail.com', 'password')
+  })
+  it('successfully', () => {
     cy.get('#create-article').click()
 
     cy.get('#article-form').within(() => {
@@ -28,16 +40,13 @@ describe('User can create article', () => {
   })
 
   it('unsuccessfully', () => {
-    cy.server()
     cy.route({
       method: 'POST',
       url: 'http://localhost:3000/api/v1/articles',
       response: 'fixture:unsuccessfully_created_article.json',
       status: 400
     })
-    cy.visit('http://localhost:3001')
     cy.get('#create-article').click()
-
     cy.get('#article-form').within(() => {
       cy.get('#title-input').type('Trump has gone insane')
       cy.get('#content-input').type('Trump has been diagnosed with crazy syndrome')
