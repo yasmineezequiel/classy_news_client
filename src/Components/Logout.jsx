@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import '../index.css';
 import { signOutUser } from '../state/actions/reduxTokenAuthConfig';
 import { connect } from 'react-redux';
-import { Menu,
-         Container,
-         Grid  } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom'
 
 class Logout extends Component {
@@ -36,7 +34,7 @@ class Logout extends Component {
             to="/"
             onClick={signOut}
             name="logout"
-         />
+          />
         )
       }
     if (this.state.errorMessage !== '') {
