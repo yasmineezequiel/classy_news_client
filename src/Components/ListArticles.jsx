@@ -72,7 +72,7 @@ class ListArticles extends Component {
           let trim_ingress = prev.content.substr(0, 75)
           let ingress = trim_ingress.substr(0, Math.min(trim_ingress.length, trim_ingress.lastIndexOf(" "))) + ' ...'
           // if (article.id > maxArt) maxArt = article
-          if (+current.id > +prev.id) {
+          if (current.id > prev.id) {
             return current
           } else {
             return <NavLink id={`article_${prev.id}`} key={prev.id} to={`/article/${prev.id}`}>
