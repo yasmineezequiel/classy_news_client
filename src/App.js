@@ -5,6 +5,7 @@ import Login from './Components/Login'
 import './index.css';
 import CreateArticle from './Components/CreateArticle'
 import PaymentForm from './Components/PaymentForm'
+import Logout from './Components/Logout'
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
       <>
         <Login />
         <Signup />
+        <Logout />
         <CreateArticle />
         <PaymentForm />
         <ListArticles />
