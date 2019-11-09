@@ -46,7 +46,7 @@ describe('User can pay for subscription', () => {
     })
 
     cy.get('#subscribe-button').click()
-    cy.wait(200);
+    cy.wait(200)
     cy.get('#message').should('contain','Payment Successful')
   })
 
@@ -83,7 +83,7 @@ describe('User can pay for subscription', () => {
     })
 
     cy.get('#subscribe-button').click()
-    cy.wait(200);
+    cy.wait(200)
     cy.contains('Something went wrong, please try again.')
   })
 })

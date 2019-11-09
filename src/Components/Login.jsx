@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import '../index.css';
-import LoginForm from './LoginForm';
+import '../index.css'
+import LoginForm from './LoginForm'
 import { signInUser } from '../state/actions/reduxTokenAuthConfig'
-import { connect } from 'react-redux';
-import { Container,
-         Grid  } from 'semantic-ui-react';
+import { connect } from 'react-redux'
+import { Container, Grid  } from 'semantic-ui-react'
 
 class Login extends Component {
   state = {
@@ -20,8 +19,8 @@ class Login extends Component {
   }
 
   handleLogin = () => {
-    const { signInUser } = this.props;
-    const { email, password } = this.state;
+    const { signInUser } = this.props
+    const { email, password } = this.state
     signInUser({ email, password })
       .then(
         console.log('yiihaaaa')
@@ -79,4 +78,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,  
   mapDispatchToProps
-)(Login);
+)(Login)

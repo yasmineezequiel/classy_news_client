@@ -1,4 +1,4 @@
-import 'cypress-file-upload';
+import 'cypress-file-upload'
 
 Cypress.Commands.add("user_login", (email, password) => {
   cy.route({
@@ -29,7 +29,7 @@ Cypress.Commands.add("journalist_login", (email, password) => {
         "uid": "user2@mail.com"
       }
   })
-  cy.visit("http://localhost:3001");
+  cy.visit("http://localhost:3001")
   cy.get('#login-button').click()
     cy.get('#login-form').within(()=> {
       cy.get('#email-input').type(email)
@@ -48,7 +48,7 @@ Cypress.Commands.add("subscriber_login", (email, password) => {
         "uid": "user@mail.com"
       }
   })
-  cy.visit("http://localhost:3001");
+  cy.visit("http://localhost:3001")
   cy.get('#login-button').click()
     cy.get('#login-form').within(()=> {
       cy.get('#email-input').type(email)

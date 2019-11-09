@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import { getData } from '../Modules/RequestArticles'
-import { Container, Header, Item, Grid, Segment } from 'semantic-ui-react'
+import { Container, 
+         Header, 
+         Item, 
+         Grid, 
+         Segment 
+        } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 

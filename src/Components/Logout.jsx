@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import '../index.css';
-import { signOutUser } from '../state/actions/reduxTokenAuthConfig';
-import { connect } from 'react-redux';
-import { Menu } from 'semantic-ui-react';
+import '../index.css'
+import { signOutUser } from '../state/actions/reduxTokenAuthConfig'
+import { connect } from 'react-redux'
+import { Menu } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
 class Logout extends Component {
@@ -64,4 +64,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,  
   mapDispatchToProps
-)(Logout);
+)(Logout)

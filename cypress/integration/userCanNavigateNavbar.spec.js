@@ -6,7 +6,7 @@ describe('User can navigate NavBar', () => {
       url: 'http://localhost:3000/api/v1/articles',
     })
     cy.visit('http://localhost:3001')
-  });
+  })
 
   it('journalist can access the write article page', () => {
     cy.route({
@@ -22,11 +22,11 @@ describe('User can navigate NavBar', () => {
     cy.journalist_login('user2@mail.com', 'password')
     cy.get('#create-article').click()
     cy.get('#article-form').should('exist')
-  });
+  })
 
   it('user can access the different links in navbar', () => {
-    cy.visit('http://localhost:3001');
-    cy.server();
+    cy.visit('http://localhost:3001')
+    cy.server()
     cy.route({
       method: 'POST',
       url: 'http://localhost:3000/api/v1/articles',
@@ -35,5 +35,5 @@ describe('User can navigate NavBar', () => {
     cy.get('#subscription-form').should('exist')
     cy.get('#login-button').should('exist')
     cy.get('#signup-button').should('exist')
-  });
+  })
 })

@@ -28,10 +28,10 @@ describe('User can create article', () => {
       cy.get('#author-input').type('Faraz')
       cy.get('button[type="button"]').click()
       cy.get('.fileContainer').within(() => {
-        const fileName = 'test.jpg';
+        const fileName = 'test.jpg'
         cy.fixture(fileName).then(fileContent => {
-          cy.get('input[type="file"]').upload({ fileContent, fileName, mimeType: 'application/jpg' });
-        });
+          cy.get('input[type="file"]').upload({ fileContent, fileName, mimeType: 'application/jpg' })
+        })
       })
 
       cy.get('#submit-article').click()
@@ -53,10 +53,10 @@ describe('User can create article', () => {
       cy.get('#author-input').type('Faraz')
       cy.get('button[type="button"]').click()
       cy.get('.fileContainer').within(() => {
-        const fileName = 'data.json';
+        const fileName = 'data.json'
         cy.fixture(fileName).then(fileContent => {
-          cy.get('input[type="file"]').upload({ fileContent, fileName, mimeType: 'application/json' });
-        });
+          cy.get('input[type="file"]').upload({ fileContent, fileName, mimeType: 'application/json' })
+        })
       })
       
       cy.get('#submit-article').click()

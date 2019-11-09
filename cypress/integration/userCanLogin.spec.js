@@ -1,7 +1,7 @@
 describe('User can sign up', () => {
   beforeEach(() => {
     cy.server()
-    cy.visit('http://localhost:3001');
+    cy.visit('http://localhost:3001')
   })
 
   it('successfully', () => {

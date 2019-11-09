@@ -4,8 +4,8 @@ describe('User can sign up', () => {
   })
 
   it('successfully', () => {
-    cy.visit('http://localhost:3001');
-    cy.server();
+    cy.visit('http://localhost:3001')
+    cy.server()
     cy.route({
       method: 'POST',
       url: 'http://localhost:3000/auth',
@@ -31,8 +31,8 @@ describe('User can sign up', () => {
   })
 
   it('unsuccessfully', () => {
-    cy.visit('http://localhost:3001');
-    cy.server();
+    cy.visit('http://localhost:3001')
+    cy.server()
     cy.route({
       method: 'POST',
       url: 'http://localhost:3000/auth',

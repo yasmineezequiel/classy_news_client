@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import '../index.css';
-import SignupForm from './SignupForm';
-import { registerUser } from '../state/actions/reduxTokenAuthConfig';
-import { connect } from 'react-redux';
-import { Container, Grid  } from 'semantic-ui-react';
+import '../index.css'
+import SignupForm from './SignupForm'
+import { registerUser } from '../state/actions/reduxTokenAuthConfig'
+import { connect } from 'react-redux'
+import { Container, Grid } from 'semantic-ui-react'
 
 class Signup extends Component {
   state = {
@@ -24,8 +24,8 @@ class Signup extends Component {
   }
 
   handleSignup = () => {
-    const { registerUser } = this.props;
-    const { email, name, nickname, password, password_confirmation, city, country} = this.state;
+    const { registerUser } = this.props
+    const { email, name, nickname, password, password_confirmation, city, country} = this.state
     const role = 'user'
     registerUser({ email, name, nickname, password, password_confirmation, city, country, role })
       .then(
@@ -38,14 +38,14 @@ class Signup extends Component {
         this.setState({errorMessage: error.response.data.errors.full_messages[0]}) 
         }
       })
-  }
+    }
   
   render() {
-    let signupForm, welcomeMessage, errorMessage
+    let signupForm, errorMessage
 
     if (this.props.currentUser.isSignedIn) {
           signupForm = (
-            welcomeMessage = <p id='welcome-message'>Hello {this.props.currentUser.attributes.name}</p>
+            <p id='welcome-message'>Hello {this.props.currentUser.attributes.name}</p>
           )
     } else {
       signupForm = (
@@ -89,4 +89,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,  
   mapDispatchToProps
-)(Signup);
+)(Signup)

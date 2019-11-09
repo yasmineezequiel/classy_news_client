@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
-import { Container, Grid, Segment, Divider, Header, Image } from 'semantic-ui-react'
+import { Container, 
+         Grid, 
+         Segment, 
+         Divider, 
+         Header, 
+         Image 
+        } from 'semantic-ui-react'
 import { getArticle } from '../Modules/RequestArticles'
 
 class ViewArticle extends Component {
@@ -45,7 +51,7 @@ class ViewArticle extends Component {
             </Grid>
           </Container>
         </div>
-</>
+      </>
       )
     } else {
       singleArticle = (
