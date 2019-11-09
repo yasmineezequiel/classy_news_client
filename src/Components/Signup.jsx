@@ -3,8 +3,7 @@ import '../index.css';
 import SignupForm from './SignupForm';
 import { registerUser } from '../state/actions/reduxTokenAuthConfig';
 import { connect } from 'react-redux';
-import { Container,
-         Grid  } from 'semantic-ui-react';
+import { Container, Grid  } from 'semantic-ui-react';
 
 class Signup extends Component {
   state = {
