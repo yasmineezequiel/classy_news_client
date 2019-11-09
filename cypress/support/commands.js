@@ -3,7 +3,7 @@ import 'cypress-file-upload'
 Cypress.Commands.add("user_login", (email, password) => {
   cy.route({
     method: "POST",
-    url: "http://localhost:3000/api/v1/auth/sign_in",
+    url: "https://classy-news-backend.herokuapp.com/api/v1/auth/sign_in",
     response: "fixture:successful_user_login.json",
     status: 200,
       headers: {
@@ -22,7 +22,7 @@ Cypress.Commands.add("user_login", (email, password) => {
 Cypress.Commands.add("journalist_login", (email, password) => {
   cy.route({
     method: "POST",
-    url: "http://localhost:3000/api/v1/auth/sign_in",
+    url: "https://classy-news-backend.herokuapp.com/api/v1/auth/sign_in",
     response: "fixture:successful_journalist_login.json",
     status: 200,
       headers: {
@@ -41,7 +41,7 @@ Cypress.Commands.add("journalist_login", (email, password) => {
 Cypress.Commands.add("subscriber_login", (email, password) => {
   cy.route({
     method: "POST",
-    url: "http://localhost:3000/api/v1/auth/sign_in",
+    url: "https://classy-news-backend.herokuapp.com/api/v1/auth/sign_in",
     response: "fixture:successful_subscriber_login.json",
     status: 200,
       headers: {
@@ -60,7 +60,7 @@ Cypress.Commands.add("subscriber_login", (email, password) => {
 Cypress.Commands.add("unsuccessful_user_login", (email, password) => {
   cy.route({
     method: 'POST',
-    url: 'http://localhost:3000/auth/sign_in',
+    url: 'https://classy-news-backend.herokuapp.com/auth/sign_in',
     response: 'fixture:unsuccessful_user_login.json',
     status: 422,
     headers: {

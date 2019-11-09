@@ -3,17 +3,17 @@ describe('user can view chosen article', () => {
     cy.server()
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/api/v1/articles',
+      url: 'https://classy-news-backend.herokuapp.com/api/v1/articles',
       response: 'fixture:articles.json'
     })
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/api/v1/articles/1',
+      url: 'https://classy-news-backend.herokuapp.com/api/v1/articles/1',
       response: 'fixture:article.json'
     })
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/auth/sign_in',
+      url: 'https://classy-news-backend.herokuapp.com/auth/sign_in',
       response: 'fixture:successful_journalist_login.json',
       status: 200,
       headers: {

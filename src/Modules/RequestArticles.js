@@ -1,7 +1,7 @@
 import axios from 'axios'
 import getCurrentCredentials from './GetCredentials'
 
-const apiUrl = 'http://localhost:3000/api/v1/'
+const apiUrl = 'https://classy-news-backend.herokuapp.com/api/v1/'
 
 const getData = async () => {
   try {

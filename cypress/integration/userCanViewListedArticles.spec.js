@@ -3,7 +3,7 @@ describe('user can view listed articles', () => {
     cy.server()
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/api/v1/articles',
+      url: 'https://classy-news-backend.herokuapp.com/api/v1/articles',
       response: 'fixture:articles.json'
     })
     cy.visit('http://localhost:3001')
@@ -20,7 +20,7 @@ describe('user can view listed articles', () => {
     cy.server()
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/api/v1/articles',
+      url: 'https://classy-news-backend.herokuapp.com/api/v1/articles',
       status: 400,
       response: {}
     })

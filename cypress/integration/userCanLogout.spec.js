@@ -7,7 +7,7 @@ describe('User can logout', () => {
   it('successfully', () => {
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/auth/sign_in',
+      url: 'https://classy-news-backend.herokuapp.com/auth/sign_in',
       response: 'fixture:successful_user_login.json',
       status: 200,
       headers: {
@@ -22,7 +22,7 @@ describe('User can logout', () => {
     cy.get('#submit-login-form').click()
     cy.route({
       method: 'DELETE',
-      url: 'http://localhost:3000/auth/sign_out',
+      url: 'https://classy-news-backend.herokuapp.com/auth/sign_out',
       response: 'fixture:successful_user_logout.json',
       status: 200,
       headers: {
@@ -37,7 +37,7 @@ describe('User can logout', () => {
   it('Needs to be logged in to see the logout button', () => {
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/api/v1/articles'
+      url: 'https://classy-news-backend.herokuapp.com/api/v1/articles'
     })
 
     cy.get('#login-button').should('exist')

@@ -24,7 +24,7 @@ class CheckoutForm extends Component {
 
   stripePayment = async (stripeToken) => {
     try {
-      let response = await axios.post('http://localhost:3000/api/v1/subscriptions', {
+      let response = await axios.post('https://classy-news-backend.herokuapp.com/api/v1/subscriptions', {
         stripeToken 
       }, {
         headers: getCurrentCredentials()
