@@ -1,24 +1,15 @@
 import React, { Component } from 'react'
-import '../index.css';
-import LoginForm from './LoginForm';
-import { signInUser } from '../state/actions/reduxTokenAuthConfig';
-import { connect } from 'react-redux';
-import { Button, 
-         Container,
-         Grid  } from 'semantic-ui-react';
+import '../index.css'
+import LoginForm from './LoginForm'
+import { signInUser } from '../state/actions/reduxTokenAuthConfig'
+import { connect } from 'react-redux'
+import { Container, Grid  } from 'semantic-ui-react'
 
 class Login extends Component {
   state = {
-    renderLoginForm: false,
     email: '',
     password: '',
     errorMessage: ''
-  }
-
-  renderLogin = () => {
-    this.setState({
-      renderLoginForm: !this.state.renderLoginForm
-    })
   }
 
   inputChangeHandler = (e) => {
@@ -28,14 +19,14 @@ class Login extends Component {
   }
 
   handleLogin = () => {
-    const { signInUser } = this.props;
-    const { email, password } = this.state;
+    const { signInUser } = this.props
+    const { email, password } = this.state
     signInUser({ email, password })
       .then(
         console.log('yiihaaaa')
       )
       .catch(error => {
-        this.setState({errorMessage: error.response.data.errors.full_messages[0]}) 
+        this.setState({errorMessage: error.response.data.errors }) 
       })
   }
 
@@ -45,23 +36,14 @@ class Login extends Component {
     if (this.props.currentUser.isSignedIn) {
       welcomeMessage = <p id="welcome-message">Hello {this.props.currentUser.attributes.name}</p> 
     } else {
-      if (this.state.renderLoginForm) {
-        loginForm = (
-          <div>
-            <LoginForm
-              inputChangeHandler = {this.inputChangeHandler}
-              handleLogin={this.handleLogin}
-              renderLogin={this.renderLogin}
-            />
-          </div>
-        )
-      } else {
-        loginForm = (
-          <div>
-            <Button id="login-button" onClick={ this.renderLogin }>Login</Button>
-          </div>
-        )
-      }
+      loginForm = (
+        <div>
+          <LoginForm
+            inputChangeHandler = {this.inputChangeHandler}
+            handleLogin={this.handleLogin}
+          />
+        </div>
+      )
     }
     if (this.state.errorMessage !== '') {
       errorMessage = this.state.errorMessage
@@ -75,7 +57,7 @@ class Login extends Component {
               { loginForm }
               { welcomeMessage }
             </div>
-            <p id="error-message">{ errorMessage }</p>
+            { errorMessage }
           </Grid.Column>
         </Grid>   
       </Container>  
@@ -96,4 +78,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,  
   mapDispatchToProps
-)(Login);
+)(Login)

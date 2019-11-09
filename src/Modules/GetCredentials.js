@@ -5,7 +5,7 @@ const getCurrentCredentials = () => {
     client: localStorage.getItem("client"),
     expiry: localStorage.getItem("expiry"),
     uid: localStorage.getItem("uid")
-  };
-  return credentials;
-};
+  }
+  return credentials
+}
 export default getCurrentCredentials

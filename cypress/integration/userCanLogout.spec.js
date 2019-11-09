@@ -1,7 +1,7 @@
 describe('User can logout', () => {
   beforeEach(() => {
     cy.server()
-    cy.visit('http://localhost:3001');
+    cy.visit('http://localhost:3001')
   })
 
   it('successfully', () => {

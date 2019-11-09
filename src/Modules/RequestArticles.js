@@ -36,6 +36,7 @@ const submitArticle = async (title, content, author, image) => {
 }
 
 const getArticle = async (chosenArticle) => {
+  debugger
   try {
     let response = await axios.get(
       apiUrl + `articles/${chosenArticle}`, 
@@ -45,7 +46,7 @@ const getArticle = async (chosenArticle) => {
     )
     return response 
   } catch(error) {
-    return error.response.data.error_message
+    return error.response.data.error || error.response.data.error_message
   }
 }
 

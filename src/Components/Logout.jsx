@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import '../index.css';
-import { signOutUser } from '../state/actions/reduxTokenAuthConfig';
-import { connect } from 'react-redux';
-import { Button, 
-         Container,
-         Grid  } from 'semantic-ui-react';
+import '../index.css'
+import { signOutUser } from '../state/actions/reduxTokenAuthConfig'
+import { connect } from 'react-redux'
+import { Menu } from 'semantic-ui-react'
+import { NavLink } from 'react-router-dom'
 
 class Logout extends Component {
   state = {
@@ -29,9 +28,13 @@ class Logout extends Component {
     const {signOut} = this
     if (this.props.currentUser.isSignedIn) {
         logoutButton = (
-          <div>
-            <Button id='logout-button' onClick={signOut}>Logout</Button>
-          </div>
+          <Menu.Item 
+            id="logout-button"
+            as={NavLink}
+            to="/"
+            onClick={signOut}
+            name="logout"
+          />
         )
       }
     if (this.state.errorMessage !== '') {
@@ -39,16 +42,10 @@ class Logout extends Component {
     }
 
     return (
-      <Container>
-        <Grid centered columns={1}>
-          <Grid.Column>
-            <div>
-              { logoutButton }
-            </div>
-            <p id="error-message">{ errorMessage }</p>
-          </Grid.Column>
-        </Grid>   
-      </Container>  
+      <>
+        { logoutButton }
+        <p id="error-message">{ errorMessage }</p>
+      </>
     )
   }
 }
@@ -67,4 +64,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,  
   mapDispatchToProps
-)(Logout);
+)(Logout)

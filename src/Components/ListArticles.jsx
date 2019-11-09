@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
 import { getData } from '../Modules/RequestArticles'
-import { Container, Header, Item } from 'semantic-ui-react'
-import ViewArticle from './ViewArticle';
+import { Container, 
+         Header, 
+         Item, 
+         Grid, 
+         Segment 
+        } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 
 class ListArticles extends Component {
   state = {
     articles: [],
     error_message: null,
-    renderArticle: false,
     renderArticleId: null
   }
 
@@ -15,35 +20,22 @@ class ListArticles extends Component {
     this.getArticles()
   }
 
-  makeIngress = (content, wordcount) => {
-    let ingress = content.split(' ').slice(0, wordcount).join(' ')
-    return ingress + ' ...'
-  }
+  async getArticles() {
+    let result = await getData()
 
-  async getArticles() {
-    let result = await getData()
-
-    if (result.error_message) {
-      this.setState({
+    if (result.error_message) {
+      this.setState({
         error_message: result.error_message
       })
-    } else {
-      this.setState({
-        articles: result
-      })
-    }
-  }
-
-   renderArticleHandler = (chosenArticle) => {
-     this.setState({
-       renderArticle: true,
-       chosenArticleId: chosenArticle 
-    })
-  }
+    } else {
+      this.setState({
+        articles: result
+      })
+    }
+  }
 
   render() {
-    let renderListArticles, specificArticle, error_message
-    let renderArticle = this.state.renderArticle
+    let renderListArticles, error_message
     const articleData = this.state.articles
 
     if (this.state.error_message) {
@@ -51,50 +43,75 @@ class ListArticles extends Component {
     }
 
     if (articleData.length !== 0) {
-        if (!renderArticle) {
-          renderListArticles = (
-            <>
-              {articleData.map(article => {
-                return <div id={`article_${article.id}`} onClick={() => this.renderArticleHandler(article.id)} key={article.id}>
-                  <Item.Group> 
-                    <Item>
-                      <Item.Image size='tiny' src={article.image} />
-                      <Item.Content>
-                        <Item.Description>{article.publish_date}</Item.Description>
-                        <Item.Header as="h1">{article.title}</Item.Header>
-                        <Item.Meta name="article-content">{this.makeIngress(article.content, 15)}</Item.Meta>
-                        <Item.Extra>{article.author}</Item.Extra>
-                      </Item.Content>
-                    </Item>
-                  </Item.Group> 
-                </div>
-              })}
-            </>
-          )
-        }
-      }
-      if (renderArticle) {
-        specificArticle = (
-          <ViewArticle
-            chosenArticle = {this.state.chosenArticleId}
-            renderErrorMessage = {this.setErrorMessage}
-          />
-        )
-      }
+      renderListArticles = (
+        <>
+          {articleData.map(article => {
+            let trim_ingress = article.content.substr(0, 75)
+            let ingress = trim_ingress.substr(0, Math.min(trim_ingress.length, trim_ingress.lastIndexOf(" "))) + ' ...'
+
+            return <NavLink id={`article_${article.id}`} key={article.id} to={`/article/${article.id}`}>
+              <Item.Group> 
+                <Item>
+                  <Item.Image id={`image_${article.id}`} src={article.image} />
+                  <Item.Content>
+                    <Item.Description id={`publish_date_${article.id}`}>{article.publish_date}</Item.Description>
+                    <Item.Header as="h1" id={`title_${article.id}`}>{article.title}</Item.Header>
+                    <Item.Meta id={`content_${article.id}`} name="article-content">{ingress}</Item.Meta>
+                    <Item.Extra id={`author_${article.id}`}>{article.author}</Item.Extra>
+                  </Item.Content>
+                </Item>
+              </Item.Group> 
+            </NavLink>
+          })}
+        </>
+      )
+    }
 
     return(
       <>
-        <Container text>
-          <Item.Group>
-            <Header as='h1' id="header-title">Classy News</Header>
-            {renderListArticles}
-            {specificArticle}
-            {error_message}
-          </Item.Group>
-        </Container>
+      <Container>
+        <Grid columns={2}>
+          <Grid.Column floated='left' width={9}>
+            <Item.Group>
+              <Header as='h1' id="header-title">
+                Breaking News
+              </Header>
+
+              <Container id="latest_news">
+                {renderListArticles}
+              </Container>
+            </Item.Group>
+          </Grid.Column>
+
+          <Grid.Column floated='center' width={7}>
+           <br></br>
+           <br></br>
+            <Segment>
+              <Item.Group>
+                <center><Header as='h2'>
+                  Latest News
+                </Header></center>
+                </Item.Group>
+                </Segment> 
+                {renderListArticles}
+              
+              
+            </Grid.Column>
+        </Grid>
+        {error_message}
+        </Container> 
       </>
     )
   }
 }
 
-export default ListArticles
+const mapStateToProps = state => {
+  return {
+    currentUser: state.reduxTokenAuth.currentUser
+  }
+}
+
+export default connect(
+  mapStateToProps, 
+  null
+  )(ListArticles)
