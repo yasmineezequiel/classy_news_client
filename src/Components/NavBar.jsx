@@ -20,7 +20,7 @@ import Logout from './Logout'
         <Menu.Item
           as={NavLink}
           to="/create-article"
-          name= "Create Article"
+          name="Create Article"
           id="create-article"
         />
       )}
@@ -30,7 +30,7 @@ import Logout from './Logout'
           <Menu.Item
             as={NavLink}
             to="/subscribe"
-            name= "Subscribe"
+            name="Subscribe"
             id="subscription-form"
           />
         )}  
@@ -39,7 +39,7 @@ import Logout from './Logout'
           <Menu.Item
             as={NavLink}
             to="/signup"
-            name= "Sign Up"
+            name="Sign Up"
             id="signup-button"
           />
         )}
@@ -50,7 +50,7 @@ import Logout from './Logout'
             <Menu.Item 
               as={NavLink}
               to="/login"
-              name= "Login"
+              name="Login"
               id="login-button"
             />
           )}
