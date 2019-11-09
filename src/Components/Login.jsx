@@ -27,7 +27,7 @@ class Login extends Component {
         console.log('yiihaaaa')
       )
       .catch(error => {
-        this.setState({errorMessage: error.response.data.errors.full_messages[0] || error.response.data.errors }) 
+        this.setState({errorMessage: error.response.data.errors }) 
       })
   }
 

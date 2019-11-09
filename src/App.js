@@ -37,8 +37,8 @@ const App = ({ currentUser }) => {
           <Switch>
             <Route exact path='/signup' component={Signup} />
             <Route exact path='/login' component={Login} />
-            <Route exact path='/subscribe' component={requireSignIn(PaymentForm)} />
             <Route exact path='/' component={ListArticles} />
+            <Route exact path='/subscribe' component={requireSignIn(PaymentForm)} />
             {currentUser.isSignedIn ? (
               <Route exact path='/' component={ListArticles} />
             ) : (

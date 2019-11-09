@@ -7,13 +7,13 @@ import myImage from '../logo.png'
  const NavBar = ({ currentUser }) => {
   return (
     <Menu className="navbar">
-      <Menu.Item>
-        <>
-        <div name= "Classy News" />
-        <div id="navbar-title" />
-        <a href="/" src={NavLink} ><img src={myImage} alt="Logo" width='60px' height='30px' display='block' /></a>
-        </>
-        </Menu.Item>
+      <Menu.Item
+        as={NavLink} 
+        to="/" 
+        id="navbar-home"
+        >
+        <img src={myImage} alt="Logo" id='navbar-home-image' display='block' />
+      </Menu.Item>
 
       {currentUser.attributes.role === 'journalist' && (
         <Menu.Item
@@ -30,7 +30,7 @@ import myImage from '../logo.png'
             as={NavLink}
             to="/subscribe"
             name= "Subscribe"
-            id="subscribe"
+            id="subscription-form"
           />
         )}  
 

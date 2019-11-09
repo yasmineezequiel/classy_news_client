@@ -10,7 +10,7 @@ describe('user can view listed articles', () => {
     cy.contains('Leonardo da Vinci five centuries on:')
     cy.contains('Some Title')
     cy.contains('The Louvre museum in Paris,')
-    cy.contains('Some good content')
+    cy.contains('Some good')
     cy.contains('Lauren Lion')
     cy.contains('Some awesome author')
     cy.contains('20 October 2019')

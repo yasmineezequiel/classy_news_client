@@ -17,7 +17,7 @@ describe('User can create article', () => {
       }
     })
     cy.visit('http://localhost:3001')
-    cy.user_login('user2@mail.com', 'password')
+    cy.journalist_login('user2@mail.com', 'password')
   })
   it('successfully', () => {
     cy.get('#create-article').click()

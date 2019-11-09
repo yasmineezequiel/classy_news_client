@@ -94,3 +94,11 @@ body {
   align-content: left!important;
   margin-left: 0px!important;
 }
+
+#navbar-home {
+  width: 90px;
+}
+
+#navbar-home-image {
+  width: 60px;
+}
