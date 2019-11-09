@@ -68,10 +68,10 @@ class ListArticles extends Component {
       )
 
       latestArticle = (
-        articleData.reduce(function(prev, current) {
+        <>
+        {articleData.reduce(function(prev, current) {
           let trim_ingress = prev.content.substr(0, 75)
           let ingress = trim_ingress.substr(0, Math.min(trim_ingress.length, trim_ingress.lastIndexOf(" "))) + ' ...'
-          // if (article.id > maxArt) maxArt = article
           if (current.id > prev.id) {
             return current
           } else {
@@ -89,7 +89,8 @@ class ListArticles extends Component {
                       </Item.Group> 
                     </NavLink>
           }
-        })
+        })}
+        </>
       )
     }
       
