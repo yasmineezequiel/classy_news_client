@@ -3,13 +3,13 @@ describe('User can create article', () => {
     cy.server()
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/api/v1/articles',
+      url: 'https://classy-news-backend.herokuapp.com/api/v1/articles',
       response: 'fixture:successfully_created_article.json',
       status: 200
     })
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/auth/sign_in',
+      url: 'https://classy-news-backend.herokuapp.com/auth/sign_in',
       response: 'fixture:successful_journalist_login.json',
       status: 200,
       headers: {
@@ -42,7 +42,7 @@ describe('User can create article', () => {
   it('unsuccessfully', () => {
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/api/v1/articles',
+      url: 'https://classy-news-backend.herokuapp.com/api/v1/articles',
       response: 'fixture:unsuccessfully_created_article.json',
       status: 400
     })

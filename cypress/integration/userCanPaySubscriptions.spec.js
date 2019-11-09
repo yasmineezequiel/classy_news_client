@@ -3,7 +3,7 @@ describe('User can pay for subscription', () => {
     cy.server()
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/auth/sign_in',
+      url: 'https://classy-news-backend.herokuapp.com/auth/sign_in',
       response: 'fixture:successful_user_login.json',
       status: 200,
       headers: {
@@ -18,7 +18,7 @@ describe('User can pay for subscription', () => {
     cy.get('#subscription-form').click()
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/api/v1/subscriptions',
+      url: 'https://classy-news-backend.herokuapp.com/api/v1/subscriptions',
       response: 'fixture:successful_subscription_payment.json',
       status: 200
     })
@@ -55,7 +55,7 @@ describe('User can pay for subscription', () => {
     cy.get('#subscription-form').click()
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/api/v1/subscriptions',
+      url: 'https://classy-news-backend.herokuapp.com/api/v1/subscriptions',
       response: 'fixture:unsuccessful_subscription_payment.json',
       status: 402
     })

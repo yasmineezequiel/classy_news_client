@@ -8,7 +8,7 @@ describe('User can sign up', () => {
     cy.server()
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/auth',
+      url: 'https://classy-news-backend.herokuapp.com/auth',
       response: 'fixture:successful_user_signup.json',
       status: 200,
       headers: {
@@ -35,7 +35,7 @@ describe('User can sign up', () => {
     cy.server()
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/auth',
+      url: 'https://classy-news-backend.herokuapp.com/auth',
       response: 'fixture:unsuccessful_user_signup.json',
       status: 422,
     })
