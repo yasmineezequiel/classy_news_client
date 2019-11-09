@@ -14,6 +14,7 @@ import { createBrowserHistory } from 'history'
 import { generateRequireSignInWrapper } from 'redux-token-auth'
 import { Header, Image } from 'semantic-ui-react'
 import myImage from './RB.png'
+import Logout from './Components/Logout'
 
 
 const requireSignIn = generateRequireSignInWrapper({
@@ -44,6 +45,7 @@ const App = ({ currentUser }) => {
             ) : (
               <Redirect to='/login' />
             )} 
+            <Route exact path='/' component={Logout} />
             {currentUser.attributes.role === 'subscriber' || 'journalist' ? (
               <Route exact path='/article/:id' component={ViewArticle} />
             ) : (

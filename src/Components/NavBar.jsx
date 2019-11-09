@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Menu } from 'semantic-ui-react'
 import myImage from '../logo.png'
+import Logout from './Logout'
 
  const NavBar = ({ currentUser }) => {
   return (
@@ -43,14 +44,16 @@ import myImage from '../logo.png'
           />
         )}
 
-        {currentUser.isSignedIn === false && (
-          <Menu.Item 
-            as={NavLink}
-            to="/login"
-            name= "Login"
-            id="login-button"
-          />
-        )}
+        {currentUser.isSignedIn ? (
+          <Logout />
+        ) : (
+            <Menu.Item 
+              as={NavLink}
+              to="/login"
+              name= "Login"
+              id="login-button"
+            />
+          )}
       </Menu.Menu>      
     </Menu>
   )
