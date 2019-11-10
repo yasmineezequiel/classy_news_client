@@ -140,11 +140,3 @@ export default connect(
   mapStateToProps, 
   null
   )(ListArticles)
-
-
-
-
-
-  
-
-  
